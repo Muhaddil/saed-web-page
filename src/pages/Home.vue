@@ -21,7 +21,7 @@ function switchLanguage() {
       <q-toolbar>
         <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
         <q-toolbar-title>
-          <img src="../../images/SAEDLogo.png" alt="SAED Logo" class="logo" />
+          <img src="../../public/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 
@@ -115,13 +115,13 @@ function switchLanguage() {
             <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
               transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
               @mouseleave="autoplay = true">
-              <q-carousel-slide :name="1" img-src="../../images/image1.png" />
-              <q-carousel-slide :name="2" img-src="../../images/image2.png" />
-              <q-carousel-slide :name="3" img-src="../../images/image3.png" />
-              <q-carousel-slide :name="4" img-src="../../images/image4.png" />
-              <q-carousel-slide :name="5" img-src="../../images/image5.png" />
-              <q-carousel-slide :name="6" img-src="../../images/image6.png" />
-              <q-carousel-slide :name="7" img-src="../../images/image7.png" />
+              <q-carousel-slide :name="1" img-src="../../public/images/image1.png" />
+              <q-carousel-slide :name="2" img-src="../../public/images/image2.png" />
+              <q-carousel-slide :name="3" img-src="../../public/images/image3.png" />
+              <q-carousel-slide :name="4" img-src="../../public/images/image4.png" />
+              <q-carousel-slide :name="5" img-src="../../public/images/image5.png" />
+              <q-carousel-slide :name="6" img-src="../../public/images/image6.png" />
+              <q-carousel-slide :name="7" img-src="../../public/images/image7.png" />
             </q-carousel>
           </div>
         </section>
@@ -153,7 +153,7 @@ function switchLanguage() {
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
-        <img src="../../images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
+        <img src="../../public/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
         <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
       </div>
     </q-footer>
