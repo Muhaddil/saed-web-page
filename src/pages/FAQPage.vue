@@ -129,7 +129,7 @@ watchEffect(() => {
       <q-toolbar>
         <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
         <q-toolbar-title>
-          <img src="../../public/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
+          <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 

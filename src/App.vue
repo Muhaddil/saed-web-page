@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { componentName } from './variables/route';
-import { defineAsyncComponent, type Component } from 'vue';
+// import { componentName } from './variables/route';
+// import { defineAsyncComponent, type Component } from 'vue';
+import Router from './components/Router.vue';
 
-const RouteComponent = defineAsyncComponent<Component>({
-  loader: () => import(`./pages/${componentName}.vue`),
-});
 </script>
 
 <template>
   <main class="container main-page-content pt-4 my-5">
-    <RouteComponent />
+    <Router />
   </main>
 </template>
 
