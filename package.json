@@ -12,8 +12,8 @@
     "test-ci": "vitest run"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.15",
     "@primevue/themes": "^4.2.5",
+    "@quasar/extras": "^1.16.15",
     "bulma": "^1.0.3",
     "md5-hex": "^5.0.0",
     "parse-mediawiki-template": "^0.2.2",

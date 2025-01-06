@@ -115,13 +115,13 @@ function switchLanguage() {
             <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
               transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
               @mouseleave="autoplay = true">
-              <q-carousel-slide :name="1" img-src="/images/image1.png" />
-              <q-carousel-slide :name="2" img-src="/images/image2.png" />
-              <q-carousel-slide :name="3" img-src="/images/image3.png" />
-              <q-carousel-slide :name="4" img-src="/images/image4.png" />
-              <q-carousel-slide :name="5" img-src="/images/image5.png" />
-              <q-carousel-slide :name="6" img-src="/images/image6.png" />
-              <q-carousel-slide :name="7" img-src="/images/image7.png" />
+              <q-carousel-slide :name="1" img-src="./images/image1.png" />
+              <q-carousel-slide :name="2" img-src="./images/image2.png" />
+              <q-carousel-slide :name="3" img-src="./images/image3.png" />
+              <q-carousel-slide :name="4" img-src="./images/image4.png" />
+              <q-carousel-slide :name="5" img-src="./images/image5.png" />
+              <q-carousel-slide :name="6" img-src="./images/image6.png" />
+              <q-carousel-slide :name="7" img-src="./images/image7.png" />
             </q-carousel>
           </div>
         </section>

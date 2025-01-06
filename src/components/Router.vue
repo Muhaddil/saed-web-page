@@ -20,7 +20,7 @@ const routeComponentObj = getRouteComponent();
 
 const RouteComponent = defineAsyncComponent({
   loader: () =>
-  import(/* @vite-ignore */ `../pages/${routeComponentObj.component}.vue`)
+  import(`@/pages/${routeComponentObj.component}.vue`)
 });
 
 function getRouteComponent() {

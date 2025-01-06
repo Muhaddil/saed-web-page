@@ -5,7 +5,7 @@ import { quasar } from '@quasar/vite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/saed-web-page/',
   plugins: [vue(), quasar()],
   build: {
     rollupOptions: {

@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { Quasar } from 'quasar';
 import quasarLang from 'quasar/lang/es';
+import quasarIconSet from 'quasar/icon-set/fontawesome-v6';
 import { createPinia } from 'pinia';
 
 import '@quasar/extras/roboto-font-latin-ext/roboto-font-latin-ext.css';
@@ -37,6 +38,7 @@ app.use(pinia);
 app.use(Quasar, {
   plugins: {},
   lang: quasarLang,
+  iconSet: quasarIconSet,
 })
 
 app.mount('#app')
