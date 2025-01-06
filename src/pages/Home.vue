@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useQuasar } from 'quasar';
 import ThemeSwitch from '../components/ThemeSwitch.vue';
 
-const $q = useQuasar();
-const drawer = ref(false);
+const leftDrawerOpen = ref(false);
 const language = ref('es');
 const slide = ref(1);
 const autoplay = ref(true);
@@ -12,31 +10,37 @@ const autoplay = ref(true);
 function switchLanguage() {
   language.value = language.value === 'es' ? 'en' : 'es';
 }
+function toggleLeftDrawer () {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 </script>
 
 <template>
   <q-layout view="lHh Lpr lFf">
 
-<q-header elevated>
-  <q-toolbar>
-    <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
-    <q-toolbar-title>
-      <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
-      San Andreas Emergency Department (SAED)
-    </q-toolbar-title>
+    <q-header reveal elevated class="bg-primary text-white">
+      <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-    <a href="">
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="/images/SAEDLogo.png"  alt="SAED Logo">
+          </q-avatar>
+          San Andreas Emergency Department (SAED)
+        </q-toolbar-title>
+
+        <a href="">
       <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
     </a>
 
     <a href="https://muhaddil.github.io/404.html">
       <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
     </a>
-  </q-toolbar>
-</q-header>
+      </q-toolbar>
+    </q-header>
 
-<q-drawer v-model="drawer" side="left" bordered show-if-above>
-  <q-list>
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <q-list>
     <a href="">
       <q-item clickable>
         <q-item-section>
@@ -82,7 +86,7 @@ function switchLanguage() {
       </q-item>
       </a>
     </q-list>
-</q-drawer>
+  </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
@@ -162,6 +166,11 @@ function switchLanguage() {
 </template>
 
 <style scoped lang="scss">
+.drawer {
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
+
 .logo {
   width: 30px;
   height: 30px;

@@ -201,14 +201,14 @@ watchEffect(() => {
 
         <div class="faq-container">
           <div class="search-container">
-            <q-input filled v-model="searchTerm" placeholder="Buscar preguntas..." class="search-container input" />
+            <q-input rounded filled v-model="searchTerm" placeholder="Buscar preguntas..." class="search-container input" />
           </div>
 
           <div class="faq-list q-mt-md">
             <div v-for="(item, index) in filteredFaqs" :key="index" class="faq-item">
               <q-card class="q-mb-md">
                 <q-card-section>
-                  <q-expansion-item :label="item.question" dense>
+                  <q-expansion-item :label="item.question">
                     <q-card>
                       <q-card-section>
                         <div class="faq-answer">{{ item.answer }}</div>
