@@ -133,11 +133,11 @@ watchEffect(() => {
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 
-        <a href="">
+        <a href="/">
           <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="information.html">
           <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
         </a>
       </q-toolbar>
@@ -145,7 +145,7 @@ watchEffect(() => {
 
     <q-drawer v-model="drawer" side="left" bordered show-if-above>
       <q-list>
-        <a href="">
+        <a href="/">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-info-circle" />
@@ -154,7 +154,7 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="sams.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-hospital" />
@@ -163,7 +163,7 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="safd.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-fire" />
@@ -181,17 +181,17 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="contact.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-phone" />
               Contacto
             </q-item-section>
           </q-item>
-          </a>
-        </q-list>
+        </a>
+      </q-list>
     </q-drawer>
-    
+
     <q-page-container>
       <q-page class="q-pa-md">
 
@@ -209,10 +209,11 @@ watchEffect(() => {
               <q-card class="q-mb-md">
                 <q-card-section>
                   <q-expansion-item :label="item.question" dense>
-                    <template v-slot:header>
-                      <span class="q-mb-none">{{ item.question }}</span>
-                    </template>
-                    <div>{{ item.answer }}</div>
+                    <q-card>
+                      <q-card-section>
+                        <div class="faq-answer">{{ item.answer }}</div>
+                      </q-card-section>
+                    </q-card>
                   </q-expansion-item>
                 </q-card-section>
               </q-card>
@@ -302,6 +303,11 @@ watchEffect(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  font-size: 1.2rem;
+}
+
+.faq-answer {
+  font-size: 0.9rem;
 }
 
 .faq-item:hover {
@@ -314,15 +320,11 @@ watchEffect(() => {
   transition: all 0.3s ease;
 }
 
-.q-expansion-item__header {
+.q-expansion-item--label {
   font-weight: bold;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 2.1rem;
   transition: color 0.3s ease;
-}
-
-.q-expansion-item__header:hover {
-  color: #007bff;
 }
 
 .no-results-message {
