@@ -11,7 +11,7 @@ import Router from './components/Router.vue';
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
   border-block-end: 1px solid var(--p-toolbar-border-color);
 }

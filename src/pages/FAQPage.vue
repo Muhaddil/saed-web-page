@@ -234,7 +234,7 @@ watchEffect(() => {
   </q-layout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .search-container {
   position: relative;
   display: flex;

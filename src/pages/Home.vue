@@ -161,7 +161,7 @@ function switchLanguage() {
   </q-layout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
   width: 30px;
   height: 30px;
