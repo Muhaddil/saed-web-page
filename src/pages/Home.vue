@@ -17,72 +17,72 @@ function switchLanguage() {
 <template>
   <q-layout view="lHh Lpr lFf">
 
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
-        <q-toolbar-title>
-          <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
-          San Andreas Emergency Department (SAED)
-        </q-toolbar-title>
+<q-header elevated>
+  <q-toolbar>
+    <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
+    <q-toolbar-title>
+      <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
+      San Andreas Emergency Department (SAED)
+    </q-toolbar-title>
 
-        <a href="/saed-web-page/">
-          <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
-        </a>
+    <a href="">
+      <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
+    </a>
 
-        <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
-        </a>
-      </q-toolbar>
-    </q-header>
+    <a href="https://muhaddil.github.io/404.html">
+      <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+    </a>
+  </q-toolbar>
+</q-header>
 
-    <q-drawer v-model="drawer" side="left" bordered show-if-above>
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-info-circle" />
-              Información General
-            </q-item-section>
-          </q-item>
-        </a>
+<q-drawer v-model="drawer" side="left" bordered show-if-above>
+  <q-list>
+    <a href="">
+      <q-item clickable>
+        <q-item-section>
+          <q-icon name="fas fa-info-circle" />
+          Información General
+        </q-item-section>
+      </q-item>
+    </a>
 
-        <a href="https://muhaddil.github.io/404.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-hospital" />
-              SAMS
-            </q-item-section>
-          </q-item>
-        </a>
+    <a href="https://muhaddil.github.io/404.html">
+      <q-item clickable>
+        <q-item-section>
+          <q-icon name="fas fa-hospital" />
+          SAMS
+        </q-item-section>
+      </q-item>
+    </a>
 
-        <a href="https://muhaddil.github.io/404.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-fire" />
-              SAFD
-            </q-item-section>
-          </q-item>
-        </a>
+    <a href="https://muhaddil.github.io/404.html">
+      <q-item clickable>
+        <q-item-section>
+          <q-icon name="fas fa-fire" />
+          SAFD
+        </q-item-section>
+      </q-item>
+    </a>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-question-circle" />
-              FAQ
-            </q-item-section>
-          </q-item>
-        </a>
+    <a href="faq.html">
+      <q-item clickable>
+        <q-item-section>
+          <q-icon name="fas fa-question-circle" />
+          FAQ
+        </q-item-section>
+      </q-item>
+    </a>
 
-        <a href="https://muhaddil.github.io/404.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-phone" />
-              Contacto
-            </q-item-section>
-          </q-item>
-          </a>
-        </q-list>
-    </q-drawer>
+    <a href="https://muhaddil.github.io/404.html">
+      <q-item clickable>
+        <q-item-section>
+          <q-icon name="fas fa-phone" />
+          Contacto
+        </q-item-section>
+      </q-item>
+      </a>
+    </q-list>
+</q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
