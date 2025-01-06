@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useRouteDataStore } from '../stores/routeDataStore';
-import { defineAsyncComponent, type Component } from 'vue';
+import { defineAsyncComponent } from 'vue';
 
 const routeData = useRouteDataStore();
 const { route } = storeToRefs(routeData);
