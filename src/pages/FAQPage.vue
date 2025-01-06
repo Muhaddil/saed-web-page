@@ -133,7 +133,7 @@ watchEffect(() => {
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 
-        <a href="/">
+        <a href="/saed-web-page/">
           <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
         </a>
 
@@ -145,7 +145,7 @@ watchEffect(() => {
 
     <q-drawer v-model="drawer" side="left" bordered show-if-above>
       <q-list>
-        <a href="/">
+        <a href="/saed-web-page/">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-info-circle" />

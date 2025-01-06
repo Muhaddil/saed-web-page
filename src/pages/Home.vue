@@ -29,7 +29,7 @@ function toggleLeftDrawer () {
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 
-        <a href="">
+        <a href="/saed-web-page/">
       <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
     </a>
 
@@ -41,7 +41,7 @@ function toggleLeftDrawer () {
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-list>
-    <a href="">
+    <a href="/saed-web-page/">
       <q-item clickable>
         <q-item-section>
           <q-icon name="fas fa-info-circle" />
