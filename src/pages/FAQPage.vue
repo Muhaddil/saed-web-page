@@ -133,11 +133,11 @@ watchEffect(() => {
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
 
-        <a href="/">
+        <a href="/saed-web-page/">
           <q-btn flat icon="fas fa-home" aria-label="Ir a inicio" />
         </a>
 
-        <a href="information.html">
+        <a href="https://muhaddil.github.io/404.html">
           <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
         </a>
       </q-toolbar>
@@ -145,7 +145,7 @@ watchEffect(() => {
 
     <q-drawer v-model="drawer" side="left" bordered show-if-above>
       <q-list>
-        <a href="/">
+        <a href="/saed-web-page/">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-info-circle" />
@@ -154,7 +154,7 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="sams.html">
+        <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-hospital" />
@@ -163,7 +163,7 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="safd.html">
+        <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-fire" />
@@ -181,7 +181,7 @@ watchEffect(() => {
           </q-item>
         </a>
 
-        <a href="contact.html">
+        <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
             <q-item-section>
               <q-icon name="fas fa-phone" />
