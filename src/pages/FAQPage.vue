@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect } from "vue";
-import ThemeSwitch from '../components/ThemeSwitch.vue';
+import ThemeSwitch from '@/components/ThemeSwitch.vue';
 
 const faqs = ref([
   {

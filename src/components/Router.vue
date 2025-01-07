@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useRouteDataStore } from '../stores/routeDataStore';
+import { useRouteDataStore } from '@/stores/routeDataStore';
 import { defineAsyncComponent } from 'vue';
 
 const routeData = useRouteDataStore();
@@ -14,6 +14,7 @@ interface RouterObj {
 const router: Record<string, RouterObj> = {
   faq: { component: 'FAQPage', requiresData: false },
   index: { component: 'Home', requiresData: false },
+  sams: { component: 'SAMS', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();

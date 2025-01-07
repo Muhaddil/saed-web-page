@@ -26,7 +26,7 @@ jobs:
           npm run build
 
       - name: Minify Code
-        uses: Lenni009/minify-js@main
+        uses: Muhaddil/minify-js@main
         with:
           directory: dist
           overwrite: true

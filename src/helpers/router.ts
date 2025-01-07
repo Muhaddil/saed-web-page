@@ -1,4 +1,4 @@
-import { route, router } from '../variables/route';
+import { route, router } from '@/variables/route';
 
 export function getCurrentRoute() {
   const path = window.location.pathname;

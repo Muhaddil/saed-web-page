@@ -1,7 +1,7 @@
 <script setup lang="ts">
-// import { componentName } from './variables/route';
+// import { componentName } from '@/variables/route';
 // import { defineAsyncComponent, type Component } from 'vue';
-import Router from './components/Router.vue';
+import Router from '@/components/Router.vue';
 
 </script>
 

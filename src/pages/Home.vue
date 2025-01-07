@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ThemeSwitch from '../components/ThemeSwitch.vue';
+import ThemeSwitch from '@/components/ThemeSwitch.vue';
 
 const leftDrawerOpen = ref(false);
 const language = ref('es');
@@ -50,7 +50,7 @@ function toggleLeftDrawer () {
       </q-item>
     </a>
 
-    <a href="https://muhaddil.github.io/404.html">
+    <a href="sams.html">
       <q-item clickable>
         <q-item-section>
           <q-icon name="fas fa-hospital" />

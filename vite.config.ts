@@ -12,6 +12,7 @@ export default defineConfig({
       input: [
         'index.html',
         'faq.html',
+        'sams.html',
       ],
     },
   },
