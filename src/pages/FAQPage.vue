@@ -55,11 +55,19 @@ const randomMessage = ref<string>("");
 const messageShown = ref<boolean>(false);
 
 const filteredFaqs = computed(() =>
-  faqs.value.filter(
-    (faq) =>
-      faq.question.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchTerm.value.toLowerCase())
-  )
+  faqs.value.filter((faq) => {
+    const normalizeText = (text: string): string =>
+      text
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+
+    const normalizedSearchTerm = normalizeText(searchTerm.value);
+    return (
+      normalizeText(faq.question).includes(normalizedSearchTerm) ||
+      normalizeText(faq.answer).includes(normalizedSearchTerm)
+    );
+  })
 );
 
 const noResultsMessages = [
