@@ -147,45 +147,53 @@ watchEffect(() => {
       <q-list>
         <a href="/saed-web-page/">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-info-circle" />
-              Información General
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-info-circle" class="icon" />
+                Información General
+              </span>
             </q-item-section>
           </q-item>
         </a>
 
         <a href="sams.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-hospital" />
-              SAMS
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-hospital" class="icon" />
+                SAMS
+              </span>
             </q-item-section>
           </q-item>
         </a>
 
-        <a href="safd.html">
+        <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-fire" />
-              SAFD
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-fire" class="icon" />
+                SAFD
+              </span>
             </q-item-section>
           </q-item>
         </a>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-question-circle" />
+        <q-item clickable disable>
+          <q-item-section class="item-row">
+            <span>
+              <q-icon name="fas fa-question-circle" class="icon" />
               FAQ
-            </q-item-section>
-          </q-item>
-        </a>
+            </span>
+          </q-item-section>
+        </q-item>
 
         <a href="contact.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-phone" />
-              Contacto
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-phone" class="icon" />
+                Contacto
+              </span>
             </q-item-section>
           </q-item>
         </a>
@@ -201,7 +209,8 @@ watchEffect(() => {
 
         <div class="faq-container">
           <div class="search-container">
-            <q-input rounded filled v-model="searchTerm" placeholder="Buscar preguntas..." class="search-container input" />
+            <q-input rounded filled v-model="searchTerm" placeholder="Buscar preguntas..."
+              class="search-container input" />
           </div>
 
           <div class="faq-list q-mt-md">
@@ -230,6 +239,7 @@ watchEffect(() => {
             </div>
           </q-footer>
         </div>
+
       </q-page>
     </q-page-container>
   </q-layout>
@@ -344,5 +354,20 @@ watchEffect(() => {
   to {
     opacity: 1;
   }
+}
+
+.item-row {
+  display: flex;
+  margin-top: 10px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+q-item-section span {
+  line-height: 1.5;
 }
 </style>

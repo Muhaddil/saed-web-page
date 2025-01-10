@@ -83,45 +83,53 @@ function closeModal() {
       <q-list>
         <a href="/saed-web-page/">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-info-circle" />
+            <q-item-section class="item-row">
+              <span>
+              <q-icon name="fas fa-info-circle" class="icon" />
               Información General
+              </span>
             </q-item-section>
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
-          <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-hospital" />
+          <q-item disable clickable>
+            <q-item-section class="item-row">
+              <span>
+              <q-icon name="fas fa-hospital" class="icon" />
               SAMS
+              </span>
             </q-item-section>
           </q-item>
-        </a>
 
         <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-fire" />
+            <q-item-section class="item-row">
+              <span>
+              <q-icon name="fas fa-fire" class="icon" />
               SAFD
+              </span>
             </q-item-section>
           </q-item>
         </a>
 
         <a href="faq.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-question-circle" />
+            <q-item-section class="item-row">
+              <span>
+              <q-icon name="fas fa-question-circle" class="icon" />
               FAQ
+            </span>
             </q-item-section>
           </q-item>
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
-            <q-item-section>
-              <q-icon name="fas fa-phone" />
+            <q-item-section class="item-row">
+              <span>
+              <q-icon name="fas fa-phone" class="icon" />
               Contacto
+              </span>
             </q-item-section>
           </q-item>
         </a>
@@ -439,5 +447,19 @@ function closeModal() {
 
 .care-card q-icon {
   margin-bottom: 16px;
+}
+
+.item-row {
+  display: flex;
+  margin-top: 10px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.3rem;
+}
+
+q-item-section span {
+  line-height: 1.5;
 }
 </style>

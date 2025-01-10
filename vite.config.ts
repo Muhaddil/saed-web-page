@@ -13,6 +13,7 @@ export default defineConfig({
         'index.html',
         'faq.html',
         'sams.html',
+        'sapdhome.html',
       ],
     },
   },

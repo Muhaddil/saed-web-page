@@ -15,6 +15,7 @@ const router: Record<string, RouterObj> = {
   faq: { component: 'FAQPage', requiresData: false },
   index: { component: 'Home', requiresData: false },
   sams: { component: 'SAMS', requiresData: false },
+  sapdhome: { component: 'HomeSAPD', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();
