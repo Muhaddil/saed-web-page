@@ -101,6 +101,17 @@ function closeModal() {
             </q-item-section>
           </q-item>
 
+          <a href="promotions.html">
+          <q-item clickable>
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fa-solid fa-file-contract" class="icon" />
+                Ascensos
+              </span>
+            </q-item-section>
+          </q-item>
+        </a>
+
         <a href="https://muhaddil.github.io/404.html">
           <q-item clickable>
             <q-item-section class="item-row">

@@ -4,9 +4,11 @@ import { useQuasar } from "quasar";
 
 const $q = useQuasar();
 
-const themeLabel = computed(() =>
-  $q.dark.isActive ? "Modo claro" : "Modo oscuro"
-);
+// const themeLabel = computed(() =>
+//   $q.dark.isActive ? "Modo claro" : "Modo oscuro"
+// );
+
+const themeIcon = computed(() => ($q.dark.isActive ? "fas fa-sun" : "fas fa-moon"));
 
 function toggleTheme() {
   const isDark = $q.dark.isActive;
@@ -28,8 +30,7 @@ if (storedTheme === 'dark') $q.dark.set(true);
 <template>
   <q-btn
     @click="toggleTheme"
-    icon="fas fa-moon"
-    :label="themeLabel"
+    :icon="themeIcon"
     color="primary"
     size="sm"
     aria-label="Cambiar tema"

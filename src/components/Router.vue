@@ -16,13 +16,14 @@ const router: Record<string, RouterObj> = {
   index: { component: 'Home', requiresData: false },
   sams: { component: 'SAMS', requiresData: false },
   sapdhome: { component: 'HomeSAPD', requiresData: false },
+  promotions: { component: 'Promotions', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();
 
 const RouteComponent = defineAsyncComponent({
   loader: () =>
-  import(`@/pages/${routeComponentObj.component}.vue`)
+    import(`@/pages/${routeComponentObj.component}.vue`)
 });
 
 function getRouteComponent() {
