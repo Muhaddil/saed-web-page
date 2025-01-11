@@ -16,35 +16,51 @@ const faqs = ref([
     answer: 'Para unirte al SAED, debes completar un formulario de solicitud y participar en un proceso de selección. Este incluye entrevistas, pruebas prácticas y evaluaciones de aptitud. Dependiendo de tus intereses, puedes postularte al SAMS o al SAFD.',
   },
   {
-    question: '¿Cuánto se cobra trabajando para el SAED?',
-    answer: 'Los ingresos en el SAED dependen de si formas parte del SAMS o del SAFD, y de tu rango dentro de la organización...',
-  },
-  {
-    question: '¿Qué servicios ofrece el SAMS?',
+  "question": "¿Cuánto se cobra trabajando para el SAED?",
+  "answer": "<p class='mt-2'>Los ingresos en el SAED dependen de si formas parte del SAMS o del SAFD, y de tu rango dentro de la organización:</p>\
+  <ul class='mt-2'>\
+    <li><strong>SAMS (San Andreas Medical Services):</strong>\
+      <ul>\
+        <li>Recibes un sueldo pasivo cada 30 minutos, comenzando en $550 para los rangos iniciales.</li>\
+        <li>Por cada ascenso, el sueldo aumenta en $50, llegando hasta un máximo de $1,500.</li>\
+        <li>Además, obtienes una bonificación de $1,100 por cada hora activa trabajada.</li>\
+      </ul>\
+    </li>\
+    <li><strong>SAFD (San Andreas Fire Department):</strong>\
+      <ul>\
+        <li>El sueldo pasivo se calcula de manera similar al SAMS.</li>\
+        <li>Recibes $25 adicionales por cada incendio apagado con éxito, incentivando la acción directa en emergencias.</li>\
+      </ul>\
+    </li>\
+  </ul>\
+  <p class='mt-2'>Ambos departamentos están diseñados para recompensar el compromiso y el esfuerzo, ofreciendo un esquema de pago justo y competitivo.</p>"
+},
+{
+  question: '¿Qué servicios ofrece el SAMS?',
     answer: 'El SAMS brinda atención médica de emergencia, traslados en ambulancia, soporte vital avanzado y servicios de consulta preventiva. Además, organiza campañas de salud para la comunidad.',
   },
-  {
-    question: '¿Qué servicios ofrece el SAFD?',
+{
+  question: '¿Qué servicios ofrece el SAFD?',
     answer: 'El SAFD se encarga de responder a incendios, rescates en accidentes vehiculares, operaciones de búsqueda y rescate, y control de materiales peligrosos. También realiza inspecciones de seguridad contra incendios.',
   },
-  {
-    question: '¿Qué requisitos debo cumplir para unirme al SAED?',
+{
+  question: '¿Qué requisitos debo cumplir para unirme al SAED?',
     answer: 'Debes tener al menos 21 años, poseer todas las licencias de coducción terrestres, y demostrar habilidades de trabajo en equipo y disposición para responder ante emergencias. Además, es necesario completar una capacitación inicial en la academia correspondiente.',
   },
-  {
-    question: '¿Cómo puedo colaborar con el SAED si no soy miembro?',
+{
+  question: '¿Cómo puedo colaborar con el SAED si no soy miembro?',
     answer: 'Puedes colaborar participando en simulacros de emergencia, asistiendo a talleres comunitarios o donando suministros. También puedes ofrecer tu tiempo como voluntario en actividades específicas organizadas por el SAED.',
   },
-  {
-    question: '¿Cómo puedo reportar un problema relacionado con los servicios del SAED?',
+{
+  question: '¿Cómo puedo reportar un problema relacionado con los servicios del SAED?',
     answer: 'Puedes reportar cualquier problema o sugerencia a través del formulario de contacto en nuestra página oficial o directamente en las oficinas del SAED. Tu retroalimentación nos ayuda a mejorar continuamente.',
   },
-  {
-    question: '¿Existen programas de formación continua para los miembros del SAED?',
+{
+  question: '¿Existen programas de formación continua para los miembros del SAED?',
     answer: 'Sí, el SAED ofrece programas de capacitación regular para sus miembros, incluyendo talleres de primeros auxilios avanzados, técnicas de rescate y gestión de crisis. La formación es clave para mantener altos estándares de servicio.',
   },
-  {
-    question: '¿Qué debo hacer si tengo una emergencia?',
+{
+  question: '¿Qué debo hacer si tengo una emergencia?',
     answer: 'En caso de emergencia, llama al número correspondiente (SAFD o SAMS) en la app de "Servicios" en tu movil. Mantén la calma, proporciona tu ubicación exacta y describe brevemente la situación. Los equipos del SAED estarán en camino para asistirte.',
   },
 ]);
@@ -239,7 +255,7 @@ watchEffect(() => {
                   <q-expansion-item :label="item.question">
                     <q-card>
                       <q-card-section>
-                        <div class="faq-answer">{{ item.answer }}</div>
+                        <div class="faq-answer" v-html="item.answer"></div>
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
