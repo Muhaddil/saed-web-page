@@ -96,12 +96,12 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="contact.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
+              <q-icon name="fas fa-phone" class="icon" />
+              Contacto
               </span>
             </q-item-section>
           </q-item>

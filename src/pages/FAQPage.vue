@@ -66,9 +66,9 @@ const faqs = ref([
 ]);
 
 const searchTerm = ref("");
-const drawer = ref<boolean>(false);
 const randomMessage = ref<string>("");
 const messageShown = ref<boolean>(false);
+const leftDrawerOpen = ref(false);
 
 const filteredFaqs = computed(() =>
   faqs.value.filter((faq) => {
@@ -144,6 +144,10 @@ watchEffect(() => {
     messageShown.value = false;
   }
 });
+
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 </script>
 
 <template>
@@ -151,7 +155,7 @@ watchEffect(() => {
 
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat icon="menu" @click="drawer = !drawer" v-if="$q.screen.gt.sm" aria-label="Abrir menú lateral" />
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>
           <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logo" />
           San Andreas Emergency Department (SAED)
@@ -167,14 +171,14 @@ watchEffect(() => {
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="drawer" side="left" bordered show-if-above>
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-list>
         <a href="/saed-web-page/">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
+              <q-icon name="fas fa-info-circle" class="icon" />
+              Información General
               </span>
             </q-item-section>
           </q-item>
@@ -184,14 +188,14 @@ watchEffect(() => {
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
+              <q-icon name="fas fa-hospital" class="icon" />
+              SAMS
               </span>
             </q-item-section>
           </q-item>
         </a>
 
-        <a href="promotions.html">
+          <a href="promotions.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -206,28 +210,28 @@ watchEffect(() => {
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
+              <q-icon name="fas fa-fire" class="icon" />
+              SAFD
               </span>
             </q-item-section>
           </q-item>
         </a>
 
-        <q-item clickable disable>
-          <q-item-section class="item-row">
-            <span>
+          <q-item clickable disable>
+            <q-item-section class="item-row">
+              <span>
               <q-icon name="fas fa-question-circle" class="icon" />
               FAQ
             </span>
-          </q-item-section>
-        </q-item>
+            </q-item-section>
+          </q-item>
 
         <a href="contact.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
+              <q-icon name="fas fa-phone" class="icon" />
+              Contacto
               </span>
             </q-item-section>
           </q-item>
@@ -281,6 +285,11 @@ watchEffect(() => {
 </template>
 
 <style scoped lang="scss">
+.drawer {
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
+
 .search-container {
   position: relative;
   display: flex;

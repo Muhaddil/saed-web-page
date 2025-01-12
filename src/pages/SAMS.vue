@@ -134,7 +134,7 @@ function closeModal() {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="contact.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -260,6 +260,11 @@ function closeModal() {
 </template>
 
 <style scoped lang="scss">
+.drawer {
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
+
 .form-main-card {
   max-width: 400px;
   width: 100%;
@@ -327,11 +332,6 @@ function closeModal() {
 
 .close-btn:hover {
   background-color: rgba(0, 0, 0, 0.7);
-}
-
-.drawer {
-  margin-top: 5px;
-  font-size: 1.1rem;
 }
 
 .logo {

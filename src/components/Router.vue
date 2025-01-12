@@ -17,6 +17,7 @@ const router: Record<string, RouterObj> = {
   sams: { component: 'SAMS', requiresData: false },
   sapdhome: { component: 'HomeSAPD', requiresData: false },
   promotions: { component: 'Promotions', requiresData: false },
+  contact: { component: 'Contact', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();

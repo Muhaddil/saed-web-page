@@ -17,7 +17,7 @@ const language = ref('es');
 const searchQuery = ref('');
 const showFavorites = ref(false);
 
-const allCategorias = ref<string[]>(['Ascensos Extraordinarios', '14/12/24 - 28/12/2024']);
+const allCategorias = ref<string[]>(['28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/24 - 28/12/2024']);
 const categorias = ref<string[]>([...allCategorias.value]);
 const categoriaSeleccionada = ref<string>('');
 
@@ -27,6 +27,8 @@ const ascensos = ref<Ascenso[]>([
   { id: 2, nombre: 'Mike Foden', rango: 'Enfermero', foto: 'images/employees/Mike.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
   { id: 3, nombre: 'Lyra DiRosa', rango: 'Médico Experimentado', foto: 'images/employees/Lyra.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
   { id: 4, nombre: 'Axel Martínez', rango: 'Médico', foto: 'images/employees/Axel.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
+  { id: 5, nombre: 'Manolo Trabuko', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
+  { id: 6, nombre: 'Nicole Blackwood', rango: 'Nicole Blackwood', foto: 'images/NotAvailable.webp', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
 ]);
 
 function switchLanguage() {
@@ -201,12 +203,12 @@ function closeModal() {
           </q-item>
         </a>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="contact.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
+              <q-icon name="fas fa-phone" class="icon" />
+              Contacto
               </span>
             </q-item-section>
           </q-item>
@@ -344,6 +346,7 @@ function closeModal() {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;
+  display: grid;
 }
 
 .q-card:hover {

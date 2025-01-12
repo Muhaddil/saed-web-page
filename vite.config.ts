@@ -15,6 +15,7 @@ export default defineConfig({
         "sams.html",
         "sapdhome.html",
         "promotions.html",
+        "contact.html",
       ],
     },
   },

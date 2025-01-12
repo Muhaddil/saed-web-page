@@ -133,7 +133,7 @@ function toggleLeftDrawer() {
             <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
               transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
               @mouseleave="autoplay = true">
-              <q-carousel-slide :name="1" img-src="./images/NotAvailable.webp" />
+              <q-carousel-slide :name="1" img-src="./images/sapd/sapd 2.webp" />
               <!-- <q-carousel-slide :name="2" img-src="./images/image2.png" />
               <q-carousel-slide :name="3" img-src="./images/image3.png" />
               <q-carousel-slide :name="4" img-src="./images/image4.png" />
