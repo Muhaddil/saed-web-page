@@ -18,6 +18,7 @@ const router: Record<string, RouterObj> = {
   sapdhome: { component: 'HomeSAPD', requiresData: false },
   promotions: { component: 'Promotions', requiresData: false },
   contact: { component: 'Contact', requiresData: false },
+  safd: { component: 'SAFD', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();

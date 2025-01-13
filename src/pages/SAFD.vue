@@ -4,8 +4,8 @@ import ThemeSwitch from '@/components/ThemeSwitch.vue';
 
 const leftDrawerOpen = ref(false);
 const language = ref('es');
-const slide = ref(1);
-const autoplay = ref(true);
+// const slide = ref(1);
+// const autoplay = ref(true);
 
 function switchLanguage() {
   language.value = language.value === 'es' ? 'en' : 'es';
@@ -15,9 +15,9 @@ function toggleLeftDrawer() {
 }
 
 const forms = ref([
-  { id: 1, title: 'Formulario 1', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/form1.html' },
-  { id: 2, title: 'Formulario 2', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/form2.html' },
-  { id: 3, title: 'Formulario 3', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/form3.html' },
+  { id: 1, title: 'Formulario 1', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm1.html' },
+  { id: 2, title: 'Formulario 2', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm2.html' },
+  { id: 3, title: 'Formulario 3', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm3.html' },
 ]);
 
 const selectedForm = ref();
@@ -66,7 +66,7 @@ function closeModal() {
           <q-avatar>
             <img src="/images/SAMSlogo.png" alt="SAMS Logo">
           </q-avatar>
-          San Andreas Medical Services (SAMS)
+          San Andreas Fire Department (SAFD)
         </q-toolbar-title>
 
         <a href="/saed-web-page/">
@@ -92,14 +92,16 @@ function closeModal() {
           </q-item>
         </a>
 
-        <q-item disable clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fas fa-hospital" class="icon" />
-              SAMS
-            </span>
-          </q-item-section>
-        </q-item>
+        <a href="sams.html">
+          <q-item clickable>
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-hospital" class="icon" />
+                SAMS
+              </span>
+            </q-item-section>
+          </q-item>
+        </a>
 
         <a href="promotions.html">
           <q-item clickable>
@@ -112,16 +114,14 @@ function closeModal() {
           </q-item>
         </a>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+        <q-item clickable disable>
+          <q-item-section class="item-row">
+            <span>
+              <q-icon name="fas fa-fire" class="icon" />
+              SAFD
+            </span>
+          </q-item-section>
+        </q-item>
 
         <a href="faq.html">
           <q-item clickable>
@@ -157,32 +157,52 @@ function closeModal() {
         </div>
 
         <section id="info-section" class="info-section">
-          <h2>{{ language === 'es' ? 'San Andreas Medical Services' : 'San Andreas Medical Services' }}</h2>
+          <h2>{{ language === 'es' ? 'San Andreas Fire Department' : 'San Andreas Fire Department' }}</h2>
           <p v-if="language === 'es'">
-            El San Andreas Medical Services, tambien conocido como SAMS, es una institución de carácter público,
-            perteneciente al Gobierno de San Andreas, colaborando con el Condado de Los Santos, el Condado de Blaine y
-            el Estado de San Andreas en su totalidad. Contamos con profesionales médicos, rescatistas y especialistas,
-            de primera calidad, al igual que con instalaciones con tecnología moderna, elevando los estándares de la
-            Salud Pública.
-            Nuestro Servicio se encuentra comprometido en el avance de la tecnología médica, el mejoramiento continuo de
-            la labor institucional y la ampliación de atención en la red de mediana-alta complejidad. Invertimos en el
-            futuro para mejorar la calidad del presente, colaborando con otras instituciones y motivando a la autonomía
-            financiera para lograr un sustento eficaz e independiente.
-            Estamos comprometidos con nuestra vocación por el servicio público, y la atención a los ciudadanos del
-            Estado de San Andreas.
+            El San Andreas Fire Department, también conocido como SAFD, es una institución pública que forma parte del
+            Gobierno de San Andreas, prestando servicio al Condado de Los Santos, el Condado de Blaine y todo el Estado
+            de San Andreas. Nuestro equipo está compuesto por bomberos, rescatistas y personal especializado en la
+            atención de emergencias, quienes se destacan por su profesionalismo, compromiso y dedicación a la protección
+            de la vida y la seguridad de los ciudadanos.
+            Contamos con infraestructura avanzada y equipamiento de última generación, lo que nos permite responder de
+            manera eficiente a incendios, desastres naturales y emergencias de diversa índole. Nos comprometemos al
+            entrenamiento constante y al desarrollo de nuevas estrategias de intervención para estar siempre preparados
+            ante cualquier situación.
+            El SAFD está dedicado a la mejora continua de sus operaciones, fomentando la colaboración con otras
+            instituciones y promoviendo la conciencia sobre la prevención de incendios y la seguridad comunitaria.
+            Nuestro compromiso es salvaguardar a la comunidad de San Andreas, trabajando con pasión y responsabilidad
+            por el bienestar de todos.
           </p>
           <p v-else>
-            San Andreas Medical Services, also known as SAMS, is a public institution, belonging to the Government of
-            San Andreas, collaborating with Los Santos County, Blaine County and the State of San Andreas as a whole. We
-            have top-quality medical professionals, rescuers and specialists, as well as facilities with modern
-            technology, raising the standards of Public Health.
-            Our Service is committed to the advancement of medical technology, the continuous improvement of
-            institutional work and the expansion of care in the medium-high complexity network. We invest in the future
-            to improve the quality of the present, collaborating with other institutions and encouraging financial
-            autonomy to achieve an effective and independent livelihood.
-            We are committed to our vocation for public service, and care for the citizens of the State of San Andreas.
-          </p>
+            The San Andreas Fire Department, also known as SAFD, is a public institution that is part of the
+            Government of San Andreas, serving Los Santos County, Blaine County, and the entire State
+            of San Andreas. Our team is made up of firefighters, rescuers, and emergency response personnel, who stand
+            out for their professionalism, commitment, and dedication to protecting the lives and safety of citizens.
+            We have advanced infrastructure and state-of-the-art equipment, which allows us to respond efficiently to
+            fires, natural disasters, and emergencies of various kinds. We are committed to
+            constant training and the development of new intervention strategies to always be prepared
+            for any situation.
+            The SAFD is dedicated to the continuous improvement of its operations, fostering collaboration with other
+            institutions, and promoting awareness about fire prevention and community safety.
+            Our commitment is to safeguard the community of San Andreas, working with passion and responsibility
+            for the well-being of all. </p>
         </section>
+
+        <!-- <section class="carousel-section">
+          <div class="q-pa-md">
+            <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
+              transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
+              @mouseleave="autoplay = true">
+              <q-carousel-slide :name="1" img-src="./images/image1.png" />
+              <q-carousel-slide :name="2" img-src="./images/image2.png" />
+              <q-carousel-slide :name="3" img-src="./images/image3.png" />
+              <q-carousel-slide :name="4" img-src="./images/image4.png" />
+              <q-carousel-slide :name="5" img-src="./images/image5.png" />
+              <q-carousel-slide :name="6" img-src="./images/image6.png" />
+              <q-carousel-slide :name="7" img-src="./images/image7.png" />
+            </q-carousel>
+          </div>
+        </section> -->
 
         <section id="random-form-section" class="care-section q-pa-md">
           <h2 class="text-center text-primary q-mb-lg">
@@ -191,8 +211,8 @@ function closeModal() {
           <div class="q-pa-md flex flex-wrap justify-center q-gutter-md items-center">
             <div class="form-image-container">
               <q-card flat bordered class="image-card"
-                @click="openModal('./images/apply/Dark_Blue_and_White_Professional_Medical_Clinic_Document_1.png')">
-                <img src="/images/apply/Dark_Blue_and_White_Professional_Medical_Clinic_Document_1.png"
+                @click="openModal('./images/safd/safd.png')">
+                <img src="/images/safd/safd.png"
                   alt="Form Side Image" class="form-side-image" />
               </q-card>
 
@@ -211,23 +231,9 @@ function closeModal() {
             </q-card>
 
             <div class="form-image-container">
-              <q-card flat bordered class="image-card" @click="openModal('./images/apply/SAMS1.png')">
-                <img src="/images/apply/SAMS1.png" alt="Form Side Image" class="form-side-image" /> </q-card>
+              <q-card flat bordered class="image-card" @click="openModal('./images/safd/safd.png')">
+                <img src="/images/safd/safd.png" alt="Form Side Image" class="form-side-image" /> </q-card>
             </div>
-          </div>
-        </section>
-
-        <section class="carousel-section">
-          <div class="q-pa-md">
-            <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
-              transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
-              style="height: 60rem;" @mouseleave="autoplay = true">
-              <q-carousel-slide :name="1" img-src="./images/sams/image.png" />
-              <q-carousel-slide :name="2" img-src="./images/sams/image2.png" />
-              <q-carousel-slide :name="3" img-src="./images/sams/image3.png" />
-              <q-carousel-slide :name="4" img-src="./images/sams/image4.png" />
-              <q-carousel-slide :name="5" img-src="./images/sams/image5.png" />
-            </q-carousel>
           </div>
         </section>
 

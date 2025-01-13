@@ -181,7 +181,7 @@ function closeModal() {
           </q-item-section>
         </q-item>
 
-        <a href="https://muhaddil.github.io/404.html">
+        <a href="safd.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
