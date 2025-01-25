@@ -17,7 +17,7 @@ const language = ref('es');
 const searchQuery = ref('');
 const showFavorites = ref(false);
 
-const allCategorias = ref<string[]>(['28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/24 - 28/12/2024']);
+const allCategorias = ref<string[]>(['11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024']);
 const categorias = ref<string[]>([...allCategorias.value]);
 const categoriaSeleccionada = ref<string>('');
 
@@ -28,7 +28,12 @@ const ascensos = ref<Ascenso[]>([
   { id: 3, nombre: 'Lyra DiRosa', rango: 'Médico Experimentado', foto: 'images/employees/Lyra.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
   { id: 4, nombre: 'Axel Martínez', rango: 'Médico', foto: 'images/employees/Axel.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
   { id: 5, nombre: 'Manolo Trabuko', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
-  { id: 6, nombre: 'Nicole Blackwood', rango: 'Nicole Blackwood', foto: 'images/NotAvailable.webp', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
+  { id: 6, nombre: 'Nicole Blackwood', rango: 'Enfermera', foto: 'images/employees/Nicole.png', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
+  { id: 7, nombre: 'Nicole Blackwood', rango: 'Enfermera Licenciada', foto: 'images/employees/Nicole.png', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
+  { id: 8, nombre: 'Mike Foden', rango: 'Paramédico', foto: 'images/employees/Mike.png', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
+  { id: 9, nombre: 'Antonio Sun', rango: 'Enfermero Licenciado', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
+  { id: 10, nombre: 'Manolo Trabuko', rango: 'Doctor', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
+  { id: 11, nombre: 'Noelia Rivas', rango: 'Enfermera', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
 ]);
 
 function switchLanguage() {
