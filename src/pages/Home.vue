@@ -41,7 +41,7 @@ function toggleLeftDrawer () {
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-list>
-        <a href="/saed-web-page/">
+        <a href="/saed-web-page/" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -52,7 +52,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="sams.html">
+        <a href="sams.html" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -63,7 +63,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="promotions.html">
+        <a href="promotions.html" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -74,7 +74,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="safd.html">
+        <a href="safd.html" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -85,7 +85,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="faq.html">
+        <a href="faq.html" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -96,7 +96,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="contact.html">
+        <a href="contact.html" >
           <q-item clickable>
             <q-item-section class="item-row">
               <span>

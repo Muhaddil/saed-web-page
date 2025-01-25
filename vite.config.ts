@@ -17,6 +17,7 @@ export default defineConfig({
         "promotions.html",
         "contact.html",
         "safd.html",
+        "divisionssapd.html",
       ],
     },
   },
