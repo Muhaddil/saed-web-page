@@ -18,6 +18,7 @@ export default defineConfig({
         "contact.html",
         "safd.html",
         "divisionssapd.html",
+        "photoweek.html",
       ],
     },
   },

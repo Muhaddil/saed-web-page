@@ -64,7 +64,7 @@ function closeModal() {
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAMSlogo.png" alt="SAMS Logo">
+            <img src="/images/SAFD.png" alt="SAMS Logo">
           </q-avatar>
           San Andreas Fire Department (SAFD)
         </q-toolbar-title>
@@ -112,6 +112,17 @@ function closeModal() {
               </span>
             </q-item-section>
           </q-item>
+        </a>
+
+        <a href="photoweek.html">
+        <q-item clickable>
+          <q-item-section class="item-row">
+            <span>
+              <q-icon name="fa-solid fa-camera" class="icon" />
+              Foto de la Semana
+            </span>
+          </q-item-section>
+        </q-item>
         </a>
 
         <q-item clickable disable>

@@ -20,6 +20,7 @@ const router: Record<string, RouterObj> = {
   contact: { component: 'Contact', requiresData: false },
   safd: { component: 'SAFD', requiresData: false },
   divisionssapd: { component: 'DivisionsSAPD', requiresData: false },
+  photoweek: { component: 'PhotoWeek', requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();

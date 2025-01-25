@@ -84,6 +84,17 @@ function toggleLeftDrawer() {
           </q-item>
         </a>
 
+        <a href="photoweek.html">
+        <q-item clickable>
+          <q-item-section class="item-row">
+            <span>
+              <q-icon name="fa-solid fa-camera" class="icon" />
+              Foto de la Semana
+            </span>
+          </q-item-section>
+        </q-item>
+        </a>
+
         <a href="safd.html">
           <q-item clickable>
             <q-item-section class="item-row">
