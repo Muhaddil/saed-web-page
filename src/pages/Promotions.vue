@@ -17,12 +17,14 @@ const language = ref('es');
 const searchQuery = ref('');
 const showFavorites = ref(false);
 
-const allCategorias = ref<string[]>(['25/01/2025 - 09/02/2025','11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024']);
+const allCategorias = ref<string[]>(['09/02/2025 - 22/02/2025', '25/01/2025 - 09/02/2025','11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024']);
 const categorias = ref<string[]>([...allCategorias.value]);
 const categoriaSeleccionada = ref<string>('');
 
 const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
 const ascensos = ref<Ascenso[]>([
+  { id: 14, nombre: 'Nicole Blackwood', rango: 'Médica', foto: 'images/employees/Nicole.png', categoria: '09/02/2025 - 22/02/2025', fecha: '22/02/2025', favorite: false },
+  { id: 15, nombre: 'Enzo Fontana', rango: 'Enfermero Licencaido', foto: 'images/employees/NotAvailable.webp', categoria: '09/02/2025 - 22/02/2025', fecha: '22/02/2025', favorite: false },
   { id: 12, nombre: 'Nicole Blackwood', rango: 'Paramédica', foto: 'images/employees/Nicole.png', categoria: '25/01/2025 - 09/02/2025', fecha: '09/02/2025', favorite: false },
   { id: 13, nombre: 'Manolo Trabuko', rango: 'Doctor experimentado', foto: 'images/NotAvailable.webp', categoria: '25/01/2025 - 09/02/2025', fecha: '09/02/2025', favorite: false },
   { id: 7, nombre: 'Nicole Blackwood', rango: 'Enfermera Licenciada', foto: 'images/employees/Nicole.png', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
