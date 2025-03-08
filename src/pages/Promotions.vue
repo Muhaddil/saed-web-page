@@ -24,7 +24,7 @@ const categoriaSeleccionada = ref<string>('');
 const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
 const ascensos = ref<Ascenso[]>([
   { id: 16, nombre: 'Nicole Blackwood', rango: 'Médica Experimentada', foto: 'images/employees/Nicole.png', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 17, nombre: 'Alice Diangelis', rango: 'Por decidir', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
+  { id: 17, nombre: 'Alice Diangelis', rango: 'Supervisora General', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
   { id: 18, nombre: 'Aless Vannicelli', rango: 'Paramédico', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
   { id: 19, nombre: 'Manolo Trabuko', rango: 'Cirujano General', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
   { id: 20, nombre: 'Ethan Castillo', rango: 'Enfermero', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
