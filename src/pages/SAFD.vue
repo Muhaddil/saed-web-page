@@ -15,9 +15,9 @@ function toggleLeftDrawer() {
 }
 
 const forms = ref([
-  { id: 1, title: 'Formulario 1', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm1.html' },
-  { id: 2, title: 'Formulario 2', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm2.html' },
-  { id: 3, title: 'Formulario 3', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/SAFDForm3.html' },
+  { id: 1, title: 'Formulario 1', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform1.html' },
+  { id: 2, title: 'Formulario 2', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform2.html' },
+  { id: 3, title: 'Formulario 3', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform3.html' },
 ]);
 
 const selectedForm = ref();
