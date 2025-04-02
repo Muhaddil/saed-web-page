@@ -17,12 +17,14 @@ const language = ref('es');
 const searchQuery = ref('');
 const showFavorites = ref(false);
 
-const allCategorias = ref<string[]>(['22/02/2025 - 08/03/2025', '09/02/2025 - 22/02/2025', '25/01/2025 - 09/02/2025','11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024']);
+const allCategorias = ref<string[]>(['08/03/2025 - 23/03/2025', '22/02/2025 - 08/03/2025', '09/02/2025 - 22/02/2025', '25/01/2025 - 09/02/2025','11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25', 'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024']);
 const categorias = ref<string[]>([...allCategorias.value]);
 const categoriaSeleccionada = ref<string>('');
 
 const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
 const ascensos = ref<Ascenso[]>([
+  { id: 23, nombre: 'Ethan Castillo', rango: 'Enfermero Licenciado', foto: 'images/NotAvailable.webp', categoria: '08/03/2025 - 23/03/2025', fecha: '23/03/2025', favorite: false },
+  { id: 24, nombre: 'Aless Vannicelli', rango: 'Médico', foto: 'images/NotAvailable.webp', categoria: '08/03/2025 - 23/03/2025', fecha: '23/03/2025', favorite: false },
   { id: 16, nombre: 'Nicole Blackwood', rango: 'Médica Experimentada', foto: 'images/employees/Nicole.png', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
   { id: 17, nombre: 'Alice Diangelis', rango: 'Supervisora General', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
   { id: 18, nombre: 'Aless Vannicelli', rango: 'Paramédico', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },

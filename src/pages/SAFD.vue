@@ -27,7 +27,7 @@ function randomizeForm() {
 }
 
 onMounted(() => {
-  const storedForm = localStorage.getItem('selectedForm');
+  const storedForm = localStorage.getItem('selectedFormSAFD');
   if (storedForm) {
     selectedForm.value = JSON.parse(storedForm);
   } else {
@@ -37,7 +37,7 @@ onMounted(() => {
 
 watch(selectedForm, (newForm) => {
   if (newForm) {
-    localStorage.setItem('selectedForm', JSON.stringify(newForm));
+    localStorage.setItem('selectedFormSAFD', JSON.stringify(newForm));
   }
 });
 
