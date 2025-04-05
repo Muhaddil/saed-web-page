@@ -10,7 +10,7 @@ const autoplay = ref(true);
 function switchLanguage() {
   language.value = language.value === 'es' ? 'en' : 'es';
 }
-function toggleLeftDrawer () {
+function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
@@ -41,7 +41,7 @@ function toggleLeftDrawer () {
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-list>
-        <a href="/saed-web-page/" >
+        <a href="/saed-web-page/">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -52,7 +52,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="sams.html" >
+        <a href="sams.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -63,7 +63,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="promotions.html" >
+        <a href="promotions.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -75,17 +75,17 @@ function toggleLeftDrawer () {
         </a>
 
         <a href="photoweek.html">
-        <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-camera" class="icon" />
-              Foto de la Semana
-            </span>
-          </q-item-section>
-        </q-item>
+          <q-item clickable>
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fa-solid fa-camera" class="icon" />
+                Foto de la Semana
+              </span>
+            </q-item-section>
+          </q-item>
         </a>
 
-        <a href="safd.html" >
+        <a href="safd.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -96,7 +96,7 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="faq.html" >
+        <a href="faq.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
@@ -107,12 +107,12 @@ function toggleLeftDrawer () {
           </q-item>
         </a>
 
-        <a href="contact.html" >
+        <a href="contact.html">
           <q-item clickable>
             <q-item-section class="item-row">
               <span>
-              <q-icon name="fas fa-phone" class="icon" />
-              Contacto
+                <q-icon name="fas fa-phone" class="icon" />
+                Contacto
               </span>
             </q-item-section>
           </q-item>
@@ -178,12 +178,40 @@ function toggleLeftDrawer () {
               <q-icon name="fas fa-stethoscope" size="60px" color="secondary" />
               <q-card-section class="card-content">
                 <h3>{{ language === 'es' ? 'MÉDICOS ESPECIALIZADOS' : 'SPECIALIZED DOCTORS' }}</h3>
-                <p>{{ language === 'es' ? 'Contamos con numerosos médicos especialistas, desde ginecología hasta cirugía plástica.Pide tu cita ya.' : 'We have many specialized doctors, from gynecology to plastic surgery. Book your appointment now.' }}</p>
+                <p>{{ language === 'es' ? 'Contamos con numerosos médicos especialistas, desde ginecología hasta cirugía plástica. Pide tu cita ya.' : 'We have many specialized doctors, from gynecology to plastic surgery. Book your appointment now.' }}</p>
               </q-card-section>
             </q-card>
           </div>
-        </section>
 
+          <br />
+          <br />
+
+          <div class="care-cards row q-col-gutter-md">
+            <q-card class="care-card col-12 col-md-6">
+              <q-icon name="fa-solid fa-fire-flame-curved" size="60px" color="secondary" />
+              <q-card-section class="card-content">
+                <h3>{{ language === 'es' ? 'RESPUESTA RÁPIDA' : 'FAST EMERGENCY RESPONSE' }}</h3>
+                <p
+                  v-html="language === 'es' ? 'El San Andreas Fire Department ofrece respuesta inmediata <br> a emergencias médicas, incendios y rescates. Siempre listos para servir.' :
+                    'The San Andreas Fire Department provides fast response to medical emergencies, fires, and rescues. Always ready to serve.'">
+                </p>
+              </q-card-section>
+            </q-card>
+
+            <q-card class="care-card col-12 col-md-6">
+              <q-icon name="fa-solid fa-users" size="60px" color="secondary" />
+              <q-card-section class="card-content">
+                <h3>{{ language === 'es' ? 'PERSONAL CAPACITADO' : 'TRAINED PERSONNEL' }}</h3>
+                <p
+                  v-html="language === 'es' ? 'Nuestros bomberos y paramédicos están entrenados para actuar con precisión <br> y eficacia en situaciones críticas.' :
+                    'Our firefighters and paramedics are trained to act with precision and efficiency in critical situations.'">
+                </p>
+              </q-card-section>
+            </q-card>
+
+          </div>
+
+        </section>
       </q-page>
     </q-page-container>
 

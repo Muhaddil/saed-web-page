@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.9.0",
-    "@types/node": "^22.13.17",
+    "@types/node": "^22.14.0",
     "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitest/browser": "^3.1.1",
@@ -33,13 +33,13 @@
     "happy-dom": "^17.4.4",
     "pinia": "^3.0.1",
     "prettier": "^3.5.3",
-    "sass-embedded": "^1.86.1",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.4",
+    "sass-embedded": "^1.86.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.5",
     "vitest": "^3.1.1",
     "vue": "^3.5.13",
     "vue-toastification": "^2.0.0-rc.5",
     "vue-tsc": "^2.2.8",
-    "webdriverio": "^9.12.2"
+    "webdriverio": "^9.12.4"
   }
 }
