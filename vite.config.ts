@@ -19,6 +19,7 @@ export default defineConfig({
         "safd.html",
         "divisionssapd.html",
         "photoweek.html",
+        "workers.html",
       ],
     },
   },
