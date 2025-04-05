@@ -37,6 +37,7 @@ interface Slide {
 }
 
 const slides = ref<Slide[]>([
+  { src: './images/fotosemana/fotosemana9.png', caption: 'Aguantando calor', subtitle: '🔥🚒' },
   { src: './images/fotosemana/fotosemana8.png', caption: 'Los recuerdos', subtitle: '' },
   { src: './images/fotosemana/fotosemana7.png', caption: 'El Intruso', subtitle: '' },
   { src: './images/fotosemana/fotosemana6.png', caption: 'Largas Noches', subtitle: '' },
