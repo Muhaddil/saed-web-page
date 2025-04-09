@@ -80,6 +80,7 @@ function closeModal() {
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
       <q-list>
         <a href="/saed-web-page/">
           <q-item clickable>
@@ -105,13 +106,13 @@ function closeModal() {
 
         <a href="promotions.html">
           <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-file-contract" class="icon" />
-                Ascensos
-              </span>
-            </q-item-section>
-          </q-item>
+          <q-item-section class="item-row">
+            <span>
+              <q-icon name="fa-solid fa-file-contract" class="icon" />
+              Ascensos
+            </span>
+          </q-item-section>
+        </q-item>
         </a>
 
         <a href="workers.html">
@@ -126,24 +127,24 @@ function closeModal() {
         </a>
 
         <a href="photoweek.html">
-        <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-camera" class="icon" />
-              Foto de la Semana
-            </span>
-          </q-item-section>
-        </q-item>
+          <q-item clickable>
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fa-solid fa-camera" class="icon" />
+                Foto de la Semana
+              </span>
+            </q-item-section>
+          </q-item>
         </a>
 
         <q-item clickable disable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fas fa-fire" class="icon" />
-              SAFD
-            </span>
-          </q-item-section>
-        </q-item>
+            <q-item-section class="item-row">
+              <span>
+                <q-icon name="fas fa-fire" class="icon" />
+                SAFD
+              </span>
+            </q-item-section>
+          </q-item>
 
         <a href="faq.html">
           <q-item clickable>
@@ -167,6 +168,17 @@ function closeModal() {
           </q-item>
         </a>
       </q-list>
+    </q-scroll-area>
+
+<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+    <div class="absolute-bottom bg-transparent">
+      <q-avatar size="76px" class="q-mb-sm">
+        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
+      </q-avatar>
+      <div class="text-weight-bold">San Andreas Emergency Department</div>
+      <div>@muhaddil</div>
+    </div>
+  </q-img>
     </q-drawer>
 
     <q-page-container>
