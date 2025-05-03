@@ -18,7 +18,7 @@ const searchQuery = ref('');
 const showFavorites = ref(false);
 
 const allCategorias = ref<string[]>([
-  '05/04/2025 - 19/04/2025',
+  '19/04/2025 - 03/05/2025', '05/04/2025 - 19/04/2025',
   '23/03/2025 - 05/04/2025', '08/03/2025 - 23/03/2025', '22/02/2025 - 08/03/2025', '09/02/2025 - 22/02/2025',
   '25/01/2025 - 09/02/2025', '11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25',
   'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024'
@@ -28,9 +28,9 @@ const categoriaSeleccionada = ref<string>('');
 
 const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
 const ascensos = ref<Ascenso[]>([
-  { id: 29, nombre: 'Levi Whitlock', rango: 'Supervisor General', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
-  { id: 30, nombre: 'Ethan Castillo', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
-  { id: 31, nombre: 'Manolo Trabuko', rango: 'Especialista', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
+  { id: 29, nombre: 'Levi Whitlock', rango: 'Supervisor General', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
+  { id: 30, nombre: 'Ethan Castillo', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
+  { id: 31, nombre: 'Manolo Trabuko', rango: 'Especialista', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
   { id: 27, nombre: 'Levi Whitlock', rango: 'Cirujano General', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
   { id: 28, nombre: 'Ethan Castillo', rango: 'Médico', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
   { id: 25, nombre: 'Ethan Castillo', rango: 'Paramédico', foto: 'images/NotAvailable.webp', categoria: '23/03/2025 - 05/04/2025', fecha: '05/04/2025', favorite: false },
