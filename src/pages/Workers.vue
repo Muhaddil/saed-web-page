@@ -24,18 +24,20 @@ const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
 const trabajadores = ref<Trabajador[]>([
   // SAMS
   { id: 1, nombre: 'Shila Sánchez', posicion: 'Directora Adjunta', foto: 'images/employees/Shila.png', department: 'sams', placa: 'MED-2937', favorite: false, grade: 18 },
-  { id: 2, nombre: 'Kyo Mizuki', posicion: 'Auxiliar', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 2 },
-  { id: 3, nombre: 'Ethan Castillo', posicion: 'Paramédico', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 5 },
-  { id: 4, nombre: 'Aless Vanicelli', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 7 },
-  { id: 5, nombre: 'Nicole Blackwood', posicion: 'Médico Experimentado', foto: 'images/employees/Nicole.png', department: 'sams', placa: 'MED-2764', favorite: false, grade: 7 },
+  { id: 2, nombre: 'Andres Fernandez', posicion: 'Auxiliar', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-4220', favorite: false, grade: 2 },
+  { id: 3, nombre: 'Ethan Castillo', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 5 },
+  { id: 4, nombre: 'Gary Adams', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 7 },
+  { id: 5, nombre: 'Lia Walker', posicion: 'Médico', foto: 'images/employees/Nicole.png', department: 'sams', placa: 'MED-2764', favorite: false, grade: 7 },
   { id: 6, nombre: 'Manolo Trabuko', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-2406', favorite: false, grade: 14 },
-  { id: 7, nombre: 'Alice Diangelis', posicion: 'Supervisor General', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-3057', favorite: false, grade: 16 },
+  { id: 7, nombre: 'Alice Rosse', posicion: 'Supervisor General', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-3057', favorite: false, grade: 16 },
   { id: 8, nombre: 'Sergio Martínez', posicion: 'Director', foto: 'images/employees/Sergio.png', department: 'sams', placa: 'MED-4581', favorite: false, grade: 19 },
-  { id: 9, nombre: 'Levi Whitlock', posicion: 'Doctor Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-4581', favorite: false, grade: 9 },
+  { id: 9, nombre: 'Levi Whitlock', posicion: 'Supervisor General', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-6255', favorite: false, grade: 16 },
+  { id: 10, nombre: 'Antonio Morales', posicion: 'Auxiliar', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-6255', favorite: false, grade: 2 },
 
   // SAFD
   { id: 101, nombre: 'Sergio Martínez', posicion: 'Director', foto: 'images/employees/Sergio2.png', department: 'safd', placa: 'FIRE-4581', favorite: false },
   { id: 102, nombre: 'Evaristo García', posicion: 'Jefe de Bomberos', foto: 'images/NotAvailable.webp', department: 'safd', placa: 'FIRE-2269', favorite: false },
+  { id: 103, nombre: 'Johnn Nolan', posicion: 'Sargento', foto: 'images/fotosemana/fotosemana10.png', department: 'safd', placa: 'FIRE-8998', favorite: false },
 ]);
 
 const filteredTrabajadores = computed(() => {
