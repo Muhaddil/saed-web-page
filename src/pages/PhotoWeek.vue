@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
+const language = ref("es");
 const slide = ref(1);
 const autoplay = ref(true);
 
-
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 
 function toggleLeftDrawer() {
@@ -17,7 +16,7 @@ function toggleLeftDrawer() {
 }
 
 const modalVisible = ref(false);
-const modalImage = ref('');
+const modalImage = ref("");
 
 function openModal(imageSrc: string) {
   modalImage.value = imageSrc;
@@ -26,7 +25,7 @@ function openModal(imageSrc: string) {
 
 function closeModal() {
   modalVisible.value = false;
-  modalImage.value = '';
+  modalImage.value = "";
 }
 
 interface Slide {
@@ -36,19 +35,53 @@ interface Slide {
   subtitle: string;
 }
 
-const slides = ref<Slide[]>([
-  { src: './images/fotosemana/fotosemana10.png', caption: 'San Andreas Fire Department', subtitle: 'A su servicio🔥🚒' },
-  { src: './images/fotosemana/fotosemana9.png', caption: 'Aguantando calor', subtitle: '🔥🚒' },
-  { src: './images/fotosemana/fotosemana8.png', caption: 'Los recuerdos', subtitle: '' },
-  { src: './images/fotosemana/fotosemana7.png', caption: 'El Intruso', subtitle: '' },
-  { src: './images/fotosemana/fotosemana6.png', caption: 'Largas Noches', subtitle: '' },
-  { src: './images/fotosemana/fotosemana5.png', caption: 'Que calidad', subtitle: '' },
-  { src: './images/fotosemana/fotosemana4.png', caption: 'El Resurgimiento', subtitle: '' },
-  { src: './images/fotosemana/fotosemana3.png', caption: 'Una rosa para una rosa', subtitle: '' },
-  { src: './images/FotoSemana2.png', caption: 'Un Descanso', subtitle: '' },
-  { src: './images/FotoSemana1.jpeg', caption: 'Un día más', subtitle: '' },
-  { src: './images/SAMSHeader.png', caption: 'SAMS Header', subtitle: '' },
-].map((slide, index) => ({ ...slide, id: index + 1 }))); 
+const slides = ref<Slide[]>(
+  [
+    {
+      src: "./images/fotosemana/fotosemana10.png",
+      caption: "San Andreas Fire Department",
+      subtitle: "A su servicio🔥🚒",
+    },
+    {
+      src: "./images/fotosemana/fotosemana9.png",
+      caption: "Aguantando calor",
+      subtitle: "🔥🚒",
+    },
+    {
+      src: "./images/fotosemana/fotosemana8.png",
+      caption: "Los recuerdos",
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana7.png",
+      caption: "El Intruso",
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana6.png",
+      caption: "Largas Noches",
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana5.png",
+      caption: "Que calidad",
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana4.png",
+      caption: "El Resurgimiento",
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana3.png",
+      caption: "Una rosa para una rosa",
+      subtitle: "",
+    },
+    { src: "./images/FotoSemana2.png", caption: "Un Descanso", subtitle: "" },
+    { src: "./images/FotoSemana1.jpeg", caption: "Un día más", subtitle: "" },
+    { src: "./images/SAMSHeader.png", caption: "SAMS Header", subtitle: "" },
+  ].map((slide, index) => ({ ...slide, id: index + 1 })),
+);
 </script>
 
 <template>
@@ -59,7 +92,7 @@ const slides = ref<Slide[]>([
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAMSlogo.png" alt="SAMS Logo">
+            <img src="/images/SAMSlogo.png" alt="SAMS Logo" />
           </q-avatar>
           San Andreas Medical Services (SAMS)
         </q-toolbar-title>
@@ -69,59 +102,69 @@ const slides = ref<Slide[]>([
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="promotions.html">
-          <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+          <a href="promotions.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <q-item clickable disable>
+          <q-item clickable disable>
             <q-item-section class="item-row">
               <span>
                 <q-icon name="fa-solid fa-camera" class="icon" />
@@ -130,71 +173,102 @@ const slides = ref<Slide[]>([
             </q-item-section>
           </q-item>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
-
 
     <q-page-container>
       <q-page class="q-pa-md">
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section id="ascensos">
-          <h1>{{ language === 'es' ? '¡Foto de la Semana!' : 'Photo of the Week!' }}</h1>
+          <h1>
+            {{
+              language === "es" ? "¡Foto de la Semana!" : "Photo of the Week!"
+            }}
+          </h1>
 
           <div class="q-pa-md">
-            <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
-              transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
-              @mouseleave="autoplay = true" style="height: 60rem;">
-              <q-carousel-slide v-for="slideItem in slides" :key="slideItem.id" :name="slideItem.id"
-                :img-src="slideItem.src" @click="openModal(slideItem.src)">
-                <div v-if="slideItem.caption || slideItem.subtitle" class="absolute-bottom custom-caption">
+            <q-carousel
+              animated
+              v-model="slide"
+              navigation
+              infinite
+              :autoplay="autoplay"
+              arrows
+              transition-prev="slide-right"
+              transition-next="slide-left"
+              @mouseenter="autoplay = false"
+              @mouseleave="autoplay = true"
+              style="height: 60rem"
+            >
+              <q-carousel-slide
+                v-for="slideItem in slides"
+                :key="slideItem.id"
+                :name="slideItem.id"
+                :img-src="slideItem.src"
+                @click="openModal(slideItem.src)"
+              >
+                <div
+                  v-if="slideItem.caption || slideItem.subtitle"
+                  class="absolute-bottom custom-caption"
+                >
                   <div class="text-h2">{{ slideItem.caption }}</div>
                   <div class="text-subtitle1">{{ slideItem.subtitle }}</div>
                 </div>
@@ -203,22 +277,33 @@ const slides = ref<Slide[]>([
           </div>
         </section>
 
-        <section id="form-image-container-full" class="form-image-container-full">
+        <section
+          id="form-image-container-full"
+          class="form-image-container-full"
+        >
           <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
             <div class="form-image-container-full">
               <img :src="modalImage" class="full-image" />
-              <q-btn icon="close" flat round class="close-btn" @click="closeModal" />
+              <q-btn
+                icon="close"
+                flat
+                round
+                class="close-btn"
+                @click="closeModal"
+              />
             </div>
           </q-dialog>
         </section>
-
       </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Emergency Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
   </q-layout>
@@ -286,7 +371,7 @@ const slides = ref<Slide[]>([
   text-align: left;
   padding: 12px;
   color: white;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -305,7 +390,9 @@ const slides = ref<Slide[]>([
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;
@@ -382,7 +469,9 @@ q-item-section span {
   cursor: pointer;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   width: 100%;
   height: 100%;
   max-width: 280px;
@@ -404,7 +493,9 @@ q-item-section span {
   display: block;
   border-color: yellowgreen;
   border-width: 2px;
-  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease;
 }
 
 // .ascenso-img :hover {

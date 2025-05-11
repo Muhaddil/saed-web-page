@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
+const language = ref("es");
 const modalVisible = ref(false);
-const modalImage = ref('');
+const modalImage = ref("");
 
 function openModal(imageSrc: string) {
   modalImage.value = imageSrc;
@@ -14,11 +14,11 @@ function openModal(imageSrc: string) {
 
 function closeModal() {
   modalVisible.value = false;
-  modalImage.value = '';
+  modalImage.value = "";
 }
 
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
@@ -27,14 +27,13 @@ function toggleLeftDrawer() {
 
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-header reveal elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAEDLogo.png" alt="SAED Logo">
+            <img src="/images/SAEDLogo.png" alt="SAED Logo" />
           </q-avatar>
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
@@ -44,90 +43,100 @@ function toggleLeftDrawer() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="promotions.html">
-          <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+          <a href="promotions.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
           <q-item clickable disable>
             <q-item-section class="item-row">
@@ -137,49 +146,81 @@ function toggleLeftDrawer() {
               </span>
             </q-item-section>
           </q-item>
-      </q-list>
-    </q-scroll-area>
+        </q-list>
+      </q-scroll-area>
 
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section class="contact-section">
-          <h2 class="text-center">{{ language === 'es' ? 'Contáctanos' : 'Contact Us' }}</h2>
+          <h2 class="text-center">
+            {{ language === "es" ? "Contáctanos" : "Contact Us" }}
+          </h2>
           <div class="q-gutter-md row justify-center">
             <q-card class="contact-card col-12 col-md-5 q-pa-md">
               <q-card-section @click="openModal('./images/3.png')">
                 <q-icon name="place" size="40px" color="red" class="q-mb-sm" />
-                <h3>{{ language === 'es' ? '¿Dónde encontrarnos?' : 'Where to Find Us?' }}</h3>
+                <h3>
+                  {{
+                    language === "es"
+                      ? "¿Dónde encontrarnos?"
+                      : "Where to Find Us?"
+                  }}
+                </h3>
                 <p>Hospital Ocean Medical Center</p>
                 <p>Los Santos</p>
               </q-card-section>
-              <img src="/images/3.png" alt="Ubicación" ratio="16/9" class="rounded-borders"
-                @click="openModal('./images/3.png')" />
+              <img
+                src="/images/3.png"
+                alt="Ubicación"
+                ratio="16/9"
+                class="rounded-borders"
+                @click="openModal('./images/3.png')"
+              />
             </q-card>
           </div>
         </section>
 
-        <section id="form-image-container-full" class="form-image-container-full">
+        <section
+          id="form-image-container-full"
+          class="form-image-container-full"
+        >
           <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
             <div class="form-image-container-full">
               <img :src="modalImage" class="full-image" />
-              <q-btn icon="close" flat round class="close-btn" @click="closeModal" />
+              <q-btn
+                icon="close"
+                flat
+                round
+                class="close-btn"
+                @click="closeModal"
+              />
             </div>
           </q-dialog>
         </section>
@@ -189,10 +230,12 @@ function toggleLeftDrawer() {
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Emergency Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
-
   </q-layout>
 </template>
 
@@ -257,10 +300,11 @@ function toggleLeftDrawer() {
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   margin: 0 auto;
-
 }
 
 .q-card:hover {
@@ -320,7 +364,9 @@ function toggleLeftDrawer() {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .contact-card:hover {

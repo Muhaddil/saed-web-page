@@ -1,30 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
+const language = ref("es");
 const slide = ref(1);
 const autoplay = ref(true);
 
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
 
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-header reveal elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAEDLogo.png" alt="SAED Logo">
+            <img src="/images/SAEDLogo.png" alt="SAED Logo" />
           </q-avatar>
           San Andreas Emergency Department (SAED)
         </q-toolbar-title>
@@ -34,147 +33,182 @@ function toggleLeftDrawer() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="promotions.html">
-          <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+          <a href="promotions.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
-
 
     <q-page-container>
       <q-page class="q-pa-md">
-
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section id="info-section" class="info-section">
-          <h2>{{ language === 'es' ? 'San Andreas Emergency Department' : 'San Andreas Emergency Department' }}</h2>
+          <h2>
+            {{
+              language === "es"
+                ? "San Andreas Emergency Department"
+                : "San Andreas Emergency Department"
+            }}
+          </h2>
           <p v-if="language === 'es'">
-            El San Andreas Emergency Department (SAED) es una institución privada que supervisa dos divisiones
-            principales: SAMS y SAFD. Brindamos atención médica avanzada y servicios de emergencia en todo el Estado.
-            Nuestro equipo está compuesto por profesionales altamente capacitados que garantizan una atención rápida y
-            eficiente
-            en situaciones críticas.
+            El San Andreas Emergency Department (SAED) es una institución
+            privada que supervisa dos divisiones principales: SAMS y SAFD.
+            Brindamos atención médica avanzada y servicios de emergencia en todo
+            el Estado. Nuestro equipo está compuesto por profesionales altamente
+            capacitados que garantizan una atención rápida y eficiente en
+            situaciones críticas.
           </p>
           <p v-else>
-            The San Andreas Emergency Department (SAED) is a private institution overseeing two main divisions: SAMS and
-            SAFD. We provide advanced medical care and emergency response services across the State. Our team consists
-            of
-            highly trained professionals ensuring quick and effective care in critical situations.
+            The San Andreas Emergency Department (SAED) is a private institution
+            overseeing two main divisions: SAMS and SAFD. We provide advanced
+            medical care and emergency response services across the State. Our
+            team consists of highly trained professionals ensuring quick and
+            effective care in critical situations.
           </p>
         </section>
 
         <section class="carousel-section">
           <div class="q-pa-md">
-            <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
-              transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
-              @mouseleave="autoplay = true">
+            <q-carousel
+              animated
+              v-model="slide"
+              navigation
+              infinite
+              :autoplay="autoplay"
+              arrows
+              transition-prev="slide-right"
+              transition-next="slide-left"
+              @mouseenter="autoplay = false"
+              @mouseleave="autoplay = true"
+            >
               <q-carousel-slide :name="1" img-src="./images/image1.png" />
               <q-carousel-slide :name="2" img-src="./images/image2.png" />
               <q-carousel-slide :name="3" img-src="./images/image3.png" />
@@ -187,22 +221,48 @@ function toggleLeftDrawer() {
         </section>
 
         <section class="care-section">
-          <h2 class="text-center">{{ language === 'es' ? 'COMO TE CUIDAMOS' : 'HOW WE CARE FOR YOU' }}</h2>
+          <h2 class="text-center">
+            {{ language === "es" ? "COMO TE CUIDAMOS" : "HOW WE CARE FOR YOU" }}
+          </h2>
 
           <div class="care-cards row q-col-gutter-md">
             <q-card class="care-card col-12 col-md-6">
               <q-icon name="fas fa-hospital-alt" size="60px" color="primary" />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'HOSPITAL Nº1 EN EL ESTADO' : "STATE'S #1 HOSPITAL" }}</h3>
-                <p>{{ language === 'es' ? 'Haz tu seguro médico y despreocupate de las facturas médicas.' : 'Get your health insurance and forget about medical bills.' }}</p>
+                <h3>
+                  {{
+                    language === "es"
+                      ? "HOSPITAL Nº1 EN EL ESTADO"
+                      : "STATE'S #1 HOSPITAL"
+                  }}
+                </h3>
+                <p>
+                  {{
+                    language === "es"
+                      ? "Haz tu seguro médico y despreocupate de las facturas médicas."
+                      : "Get your health insurance and forget about medical bills."
+                  }}
+                </p>
               </q-card-section>
             </q-card>
 
             <q-card class="care-card col-12 col-md-6">
               <q-icon name="fas fa-stethoscope" size="60px" color="secondary" />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'MÉDICOS ESPECIALIZADOS' : 'SPECIALIZED DOCTORS' }}</h3>
-                <p>{{ language === 'es' ? 'Contamos con numerosos médicos especialistas, desde ginecología hasta cirugía plástica. Pide tu cita ya.' : 'We have many specialized doctors, from gynecology to plastic surgery. Book your appointment now.' }}</p>
+                <h3>
+                  {{
+                    language === "es"
+                      ? "MÉDICOS ESPECIALIZADOS"
+                      : "SPECIALIZED DOCTORS"
+                  }}
+                </h3>
+                <p>
+                  {{
+                    language === "es"
+                      ? "Contamos con numerosos médicos especialistas, desde ginecología hasta cirugía plástica. Pide tu cita ya."
+                      : "We have many specialized doctors, from gynecology to plastic surgery. Book your appointment now."
+                  }}
+                </p>
               </q-card-section>
             </q-card>
           </div>
@@ -212,29 +272,49 @@ function toggleLeftDrawer() {
 
           <div class="care-cards row q-col-gutter-md">
             <q-card class="care-card col-12 col-md-6">
-              <q-icon name="fa-solid fa-fire-flame-curved" size="60px" color="secondary" />
+              <q-icon
+                name="fa-solid fa-fire-flame-curved"
+                size="60px"
+                color="secondary"
+              />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'RESPUESTA RÁPIDA' : 'FAST EMERGENCY RESPONSE' }}</h3>
+                <h3>
+                  {{
+                    language === "es"
+                      ? "RESPUESTA RÁPIDA"
+                      : "FAST EMERGENCY RESPONSE"
+                  }}
+                </h3>
                 <p
-                  v-html="language === 'es' ? 'El San Andreas Fire Department ofrece respuesta inmediata <br> a emergencias médicas, incendios y rescates. Siempre listos para servir.' :
-                    'The San Andreas Fire Department provides fast response to medical emergencies, fires, and rescues. Always ready to serve.'">
-                </p>
+                  v-html="
+                    language === 'es'
+                      ? 'El San Andreas Fire Department ofrece respuesta inmediata <br> a emergencias médicas, incendios y rescates. Siempre listos para servir.'
+                      : 'The San Andreas Fire Department provides fast response to medical emergencies, fires, and rescues. Always ready to serve.'
+                  "
+                ></p>
               </q-card-section>
             </q-card>
 
             <q-card class="care-card col-12 col-md-6">
               <q-icon name="fa-solid fa-users" size="60px" color="secondary" />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'PERSONAL CAPACITADO' : 'TRAINED PERSONNEL' }}</h3>
+                <h3>
+                  {{
+                    language === "es"
+                      ? "PERSONAL CAPACITADO"
+                      : "TRAINED PERSONNEL"
+                  }}
+                </h3>
                 <p
-                  v-html="language === 'es' ? 'Nuestros bomberos y paramédicos están entrenados para actuar con precisión <br> y eficacia en situaciones críticas.' :
-                    'Our firefighters and paramedics are trained to act with precision and efficiency in critical situations.'">
-                </p>
+                  v-html="
+                    language === 'es'
+                      ? 'Nuestros bomberos y paramédicos están entrenados para actuar con precisión <br> y eficacia en situaciones críticas.'
+                      : 'Our firefighters and paramedics are trained to act with precision and efficiency in critical situations.'
+                  "
+                ></p>
               </q-card-section>
             </q-card>
-
           </div>
-
         </section>
       </q-page>
     </q-page-container>
@@ -242,10 +322,12 @@ function toggleLeftDrawer() {
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Emergency Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
-
   </q-layout>
 </template>
 
@@ -264,7 +346,9 @@ function toggleLeftDrawer() {
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;

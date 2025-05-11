@@ -1,30 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
+const language = ref("es");
 const slide = ref(1);
 const autoplay = ref(true);
 
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
 
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-header reveal elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAPDLogo.png" alt="SAPD Logo">
+            <img src="/images/SAPDLogo.png" alt="SAPD Logo" />
           </q-avatar>
           San Andreas Police Department (SAPD)
         </q-toolbar-title>
@@ -34,7 +33,11 @@ function toggleLeftDrawer() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAPD" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAPD"
+          />
         </a>
       </q-toolbar>
     </q-header>
@@ -100,39 +103,58 @@ function toggleLeftDrawer() {
 
     <q-page-container>
       <q-page class="q-pa-md">
-
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section id="info-section" class="info-section">
-          <h2>{{ language === 'es' ? 'San Andreas Police Department' : 'San Andreas Police Department' }}</h2>
+          <h2>
+            {{
+              language === "es"
+                ? "San Andreas Police Department"
+                : "San Andreas Police Department"
+            }}
+          </h2>
           <p v-if="language === 'es'">
-            El San Andreas Police Department (SAPD) es la principal agencia encargada de mantener la ley y el orden en
-            el
-            estado de San Andreas. Nuestro compromiso es proteger y servir a la comunidad, garantizando la seguridad y
-            el
-            bienestar de todos los ciudadanos. Contamos con oficiales altamente capacitados y dedicados a mantener la
-            paz y
-            la justicia en nuestra jurisdicción.
+            El San Andreas Police Department (SAPD) es la principal agencia
+            encargada de mantener la ley y el orden en el estado de San Andreas.
+            Nuestro compromiso es proteger y servir a la comunidad, garantizando
+            la seguridad y el bienestar de todos los ciudadanos. Contamos con
+            oficiales altamente capacitados y dedicados a mantener la paz y la
+            justicia en nuestra jurisdicción.
           </p>
           <p v-else>
-            The San Andreas Police Department (SAPD) is the leading agency responsible for maintaining law and order in
-            the
-            state of San Andreas. Our commitment is to protect and serve the community, ensuring the safety and
-            well-being
-            of all citizens. We have highly trained officers dedicated to maintaining peace and justice in our
+            The San Andreas Police Department (SAPD) is the leading agency
+            responsible for maintaining law and order in the state of San
+            Andreas. Our commitment is to protect and serve the community,
+            ensuring the safety and well-being of all citizens. We have highly
+            trained officers dedicated to maintaining peace and justice in our
             jurisdiction.
           </p>
         </section>
 
         <section class="carousel-section">
           <div class="q-pa-md">
-            <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" arrows
-              transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
-              @mouseleave="autoplay = true">
+            <q-carousel
+              animated
+              v-model="slide"
+              navigation
+              infinite
+              :autoplay="autoplay"
+              arrows
+              transition-prev="slide-right"
+              transition-next="slide-left"
+              @mouseenter="autoplay = false"
+              @mouseleave="autoplay = true"
+            >
               <q-carousel-slide :name="1" img-src="./images/sapd/sapd 2.webp" />
               <!-- <q-carousel-slide :name="2" img-src="./images/image2.png" />
               <q-carousel-slide :name="3" img-src="./images/image3.png" />
@@ -145,37 +167,58 @@ function toggleLeftDrawer() {
         </section>
 
         <section class="care-section">
-          <h2 class="text-center">{{ language === 'es' ? 'NUESTRAS ÁREAS DE SERVICIO' : 'OUR SERVICE AREAS' }}</h2>
+          <h2 class="text-center">
+            {{
+              language === "es"
+                ? "NUESTRAS ÁREAS DE SERVICIO"
+                : "OUR SERVICE AREAS"
+            }}
+          </h2>
 
           <div class="care-cards row q-col-gutter-md">
             <q-card class="care-card col-12 col-md-6">
               <q-icon name="fas fa-shield-alt" size="60px" color="primary" />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'PATRULLAJE' : 'PATROL' }}</h3>
-                <p>{{ language === 'es' ? 'Nuestros oficiales están disponibles 24/7 para responder a emergencias y mantener la seguridad.' : 'Our officers are available 24 / 7 to respond to emergencies and ensure safety.' }}</p>
+                <h3>{{ language === "es" ? "PATRULLAJE" : "PATROL" }}</h3>
+                <p>
+                  {{
+                    language === "es"
+                      ? "Nuestros oficiales están disponibles 24/7 para responder a emergencias y mantener la seguridad."
+                      : "Our officers are available 24 / 7 to respond to emergencies and ensure safety."
+                  }}
+                </p>
               </q-card-section>
             </q-card>
 
             <q-card class="care-card col-12 col-md-6">
               <q-icon name="fas fa-search" size="60px" color="secondary" />
               <q-card-section class="card-content">
-                <h3>{{ language === 'es' ? 'INVESTIGACIONES' : 'INVESTIGATIONS' }}</h3>
-                <p>{{ language === 'es' ? 'Detectives especializados resuelven delitos y llevan a los responsables ante la justicia.' : 'Specialized detectives solve crimes and bring offenders to justice.' }}</p>
+                <h3>
+                  {{ language === "es" ? "INVESTIGACIONES" : "INVESTIGATIONS" }}
+                </h3>
+                <p>
+                  {{
+                    language === "es"
+                      ? "Detectives especializados resuelven delitos y llevan a los responsables ante la justicia."
+                      : "Specialized detectives solve crimes and bring offenders to justice."
+                  }}
+                </p>
               </q-card-section>
             </q-card>
           </div>
         </section>
-
       </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAPDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Police Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Police Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
-
   </q-layout>
 </template>
 
@@ -194,7 +237,9 @@ function toggleLeftDrawer() {
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;

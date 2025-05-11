@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect } from "vue";
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const faqs = ref([
   {
-    question: '¿Qué es el SAED?',
-    answer: 'El SAED (San Andreas Emergency Department) es la organización privada que gestiona los servicios de emergencias en San Andreas. Incluye el SAMS (Servicios Médicos) y el SAFD (Bomberos), asegurando la seguridad y bienestar de los ciudadanos.',
+    question: "¿Qué es el SAED?",
+    answer:
+      "El SAED (San Andreas Emergency Department) es la organización privada que gestiona los servicios de emergencias en San Andreas. Incluye el SAMS (Servicios Médicos) y el SAFD (Bomberos), asegurando la seguridad y bienestar de los ciudadanos.",
   },
   {
-    question: '¿Cómo funciona el SAED?',
-    answer: 'El SAED opera mediante una estructura jerárquica con equipos altamente capacitados. Los servicios médicos (SAMS) atienden emergencias sanitarias, mientras que los bomberos (SAFD) responden a incendios, rescates y emergencias relacionadas. Ambos trabajan en conjunto para ofrecer una respuesta integral.',
+    question: "¿Cómo funciona el SAED?",
+    answer:
+      "El SAED opera mediante una estructura jerárquica con equipos altamente capacitados. Los servicios médicos (SAMS) atienden emergencias sanitarias, mientras que los bomberos (SAFD) responden a incendios, rescates y emergencias relacionadas. Ambos trabajan en conjunto para ofrecer una respuesta integral.",
   },
   {
-    question: '¿Cómo puedo unirme al SAED?',
-    answer: 'Para unirte al SAED, debes completar un formulario de solicitud y participar en un proceso de selección. Este incluye entrevistas, pruebas prácticas y evaluaciones de aptitud. Dependiendo de tus intereses, puedes postularte al SAMS o al SAFD.',
+    question: "¿Cómo puedo unirme al SAED?",
+    answer:
+      "Para unirte al SAED, debes completar un formulario de solicitud y participar en un proceso de selección. Este incluye entrevistas, pruebas prácticas y evaluaciones de aptitud. Dependiendo de tus intereses, puedes postularte al SAMS o al SAFD.",
   },
   {
-  "question": "¿Cuánto se cobra trabajando para el SAED?",
-  "answer": "<p class='mt-2'>Los ingresos en el SAED dependen de si formas parte del SAMS o del SAFD, y de tu rango dentro de la organización:</p>\
+    question: "¿Cuánto se cobra trabajando para el SAED?",
+    answer:
+      "<p class='mt-2'>Los ingresos en el SAED dependen de si formas parte del SAMS o del SAFD, y de tu rango dentro de la organización:</p>\
   <ul class='mt-2'>\
     <li><strong>SAMS (San Andreas Medical Services):</strong>\
       <ul>\
@@ -33,35 +37,44 @@ const faqs = ref([
       </ul>\
     </li>\
   </ul>\
-  <p class='mt-2'>Ambos departamentos están diseñados para recompensar el compromiso y el esfuerzo, ofreciendo un esquema de pago justo y competitivo.</p>"
-},
-{
-  question: '¿Qué servicios ofrece el SAMS?',
-    answer: 'El SAMS brinda atención médica de emergencia, traslados en ambulancia, soporte vital avanzado y servicios de consulta preventiva. Además, organiza campañas de salud para la comunidad.',
+  <p class='mt-2'>Ambos departamentos están diseñados para recompensar el compromiso y el esfuerzo, ofreciendo un esquema de pago justo y competitivo.</p>",
   },
-{
-  question: '¿Qué servicios ofrece el SAFD?',
-    answer: 'El SAFD se encarga de responder a incendios, rescates en accidentes vehiculares, operaciones de búsqueda y rescate, y control de materiales peligrosos. También realiza inspecciones de seguridad contra incendios.',
+  {
+    question: "¿Qué servicios ofrece el SAMS?",
+    answer:
+      "El SAMS brinda atención médica de emergencia, traslados en ambulancia, soporte vital avanzado y servicios de consulta preventiva. Además, organiza campañas de salud para la comunidad.",
   },
-{
-  question: '¿Qué requisitos debo cumplir para unirme al SAED?',
-    answer: 'Debes tener al menos 21 años, poseer todas las licencias de coducción terrestres, y demostrar habilidades de trabajo en equipo y disposición para responder ante emergencias. Además, es necesario completar una capacitación inicial en la academia correspondiente.',
+  {
+    question: "¿Qué servicios ofrece el SAFD?",
+    answer:
+      "El SAFD se encarga de responder a incendios, rescates en accidentes vehiculares, operaciones de búsqueda y rescate, y control de materiales peligrosos. También realiza inspecciones de seguridad contra incendios.",
   },
-{
-  question: '¿Cómo puedo colaborar con el SAED si no soy miembro?',
-    answer: 'Puedes colaborar participando en simulacros de emergencia, asistiendo a talleres comunitarios o donando suministros. También puedes ofrecer tu tiempo como voluntario en actividades específicas organizadas por el SAED.',
+  {
+    question: "¿Qué requisitos debo cumplir para unirme al SAED?",
+    answer:
+      "Debes tener al menos 21 años, poseer todas las licencias de coducción terrestres, y demostrar habilidades de trabajo en equipo y disposición para responder ante emergencias. Además, es necesario completar una capacitación inicial en la academia correspondiente.",
   },
-{
-  question: '¿Cómo puedo reportar un problema relacionado con los servicios del SAED?',
-    answer: 'Puedes reportar cualquier problema o sugerencia a través del formulario de contacto en nuestra página oficial o directamente en las oficinas del SAED. Tu retroalimentación nos ayuda a mejorar continuamente.',
+  {
+    question: "¿Cómo puedo colaborar con el SAED si no soy miembro?",
+    answer:
+      "Puedes colaborar participando en simulacros de emergencia, asistiendo a talleres comunitarios o donando suministros. También puedes ofrecer tu tiempo como voluntario en actividades específicas organizadas por el SAED.",
   },
-{
-  question: '¿Existen programas de formación continua para los miembros del SAED?',
-    answer: 'Sí, el SAED ofrece programas de capacitación regular para sus miembros, incluyendo talleres de primeros auxilios avanzados, técnicas de rescate y gestión de crisis. La formación es clave para mantener altos estándares de servicio.',
+  {
+    question:
+      "¿Cómo puedo reportar un problema relacionado con los servicios del SAED?",
+    answer:
+      "Puedes reportar cualquier problema o sugerencia a través del formulario de contacto en nuestra página oficial o directamente en las oficinas del SAED. Tu retroalimentación nos ayuda a mejorar continuamente.",
   },
-{
-  question: '¿Qué debo hacer si tengo una emergencia?',
-    answer: 'En caso de emergencia, llama al número correspondiente (SAFD o SAMS) en la app de "Servicios" en tu movil. Mantén la calma, proporciona tu ubicación exacta y describe brevemente la situación. Los equipos del SAED estarán en camino para asistirte.',
+  {
+    question:
+      "¿Existen programas de formación continua para los miembros del SAED?",
+    answer:
+      "Sí, el SAED ofrece programas de capacitación regular para sus miembros, incluyendo talleres de primeros auxilios avanzados, técnicas de rescate y gestión de crisis. La formación es clave para mantener altos estándares de servicio.",
+  },
+  {
+    question: "¿Qué debo hacer si tengo una emergencia?",
+    answer:
+      'En caso de emergencia, llama al número correspondiente (SAFD o SAMS) en la app de "Servicios" en tu movil. Mantén la calma, proporciona tu ubicación exacta y describe brevemente la situación. Los equipos del SAED estarán en camino para asistirte.',
   },
 ]);
 
@@ -83,7 +96,7 @@ const filteredFaqs = computed(() =>
       normalizeText(faq.question).includes(normalizedSearchTerm) ||
       normalizeText(faq.answer).includes(normalizedSearchTerm)
     );
-  })
+  }),
 );
 
 const noResultsMessages = [
@@ -129,7 +142,7 @@ const noResultsMessages = [
 
 const getRandomMessage = (): string => {
   const randomIndex = Math.floor(Math.random() * noResultsMessages.length);
-  return noResultsMessages[randomIndex] || '';
+  return noResultsMessages[randomIndex] || "";
 };
 
 watchEffect(() => {
@@ -146,13 +159,12 @@ watchEffect(() => {
 });
 
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
 
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-header elevated>
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
@@ -166,79 +178,89 @@ function toggleLeftDrawer() {
         </a>
 
         <a href="information.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
           <a href="promotions.html">
-          <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
           <q-item clickable disable>
             <q-item-section class="item-row">
@@ -249,46 +271,57 @@ function toggleLeftDrawer() {
             </q-item-section>
           </q-item>
 
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
-
 
     <q-page-container>
       <q-page class="q-pa-md">
-
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
         </div>
 
         <div class="faq-container">
           <div class="search-container">
-            <q-input rounded filled v-model="searchTerm" placeholder="Buscar preguntas..."
-              class="search-container input" />
+            <q-input
+              rounded
+              filled
+              v-model="searchTerm"
+              placeholder="Buscar preguntas..."
+              class="search-container input"
+            />
           </div>
 
           <div class="faq-list q-mt-md">
-            <div v-for="(item, index) in filteredFaqs" :key="index" class="faq-item">
+            <div
+              v-for="(item, index) in filteredFaqs"
+              :key="index"
+              class="faq-item"
+            >
               <q-card class="q-mb-md">
                 <q-card-section>
                   <q-expansion-item :label="item.question">
@@ -303,17 +336,24 @@ function toggleLeftDrawer() {
             </div>
           </div>
 
-          <div v-if="filteredFaqs.length === 0 && messageShown" class="no-results-message">
+          <div
+            v-if="filteredFaqs.length === 0 && messageShown"
+            class="no-results-message"
+          >
             <p>{{ randomMessage }}</p>
           </div>
 
           <q-footer>
             <div class="text-center">
-              <p><i>Creado y mantenido por el equipo de comunicaciones del SAED</i></p>
+              <p>
+                <i
+                  >Creado y mantenido por el equipo de comunicaciones del
+                  SAED</i
+                >
+              </p>
             </div>
           </q-footer>
         </div>
-
       </q-page>
     </q-page-container>
   </q-layout>
@@ -343,7 +383,7 @@ function toggleLeftDrawer() {
   border-radius: 50px;
   transition: all 0.3s ease;
   font-size: 1rem;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .search-container input:focus {
@@ -369,10 +409,12 @@ function toggleLeftDrawer() {
   left: 12px;
   color: #888;
   font-size: 1.3rem;
-  transition: font-size 0.3s ease, left 0.3s ease;
+  transition:
+    font-size 0.3s ease,
+    left 0.3s ease;
 }
 
-.search-container input:focus~.search-icon {
+.search-container input:focus ~ .search-icon {
   font-size: 1.6rem;
   left: 12px;
 }

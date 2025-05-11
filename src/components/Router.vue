@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { useRouteDataStore } from '@/stores/routeDataStore';
-import { defineAsyncComponent } from 'vue';
+import { storeToRefs } from "pinia";
+import { useRouteDataStore } from "@/stores/routeDataStore";
+import { defineAsyncComponent } from "vue";
 
 const routeData = useRouteDataStore();
 const { route } = storeToRefs(routeData);
@@ -12,23 +12,22 @@ interface RouterObj {
 }
 
 const router: Record<string, RouterObj> = {
-  faq: { component: 'FAQPage', requiresData: false },
-  index: { component: 'Home', requiresData: false },
-  sams: { component: 'SAMS', requiresData: false },
-  sapdhome: { component: 'HomeSAPD', requiresData: false },
-  promotions: { component: 'Promotions', requiresData: false },
-  contact: { component: 'Contact', requiresData: false },
-  safd: { component: 'SAFD', requiresData: false },
-  divisionssapd: { component: 'DivisionsSAPD', requiresData: false },
-  photoweek: { component: 'PhotoWeek', requiresData: false },
-  workers: { component: 'Workers', requiresData: false },
+  faq: { component: "FAQPage", requiresData: false },
+  index: { component: "Home", requiresData: false },
+  sams: { component: "SAMS", requiresData: false },
+  sapdhome: { component: "HomeSAPD", requiresData: false },
+  promotions: { component: "Promotions", requiresData: false },
+  contact: { component: "Contact", requiresData: false },
+  safd: { component: "SAFD", requiresData: false },
+  divisionssapd: { component: "DivisionsSAPD", requiresData: false },
+  photoweek: { component: "PhotoWeek", requiresData: false },
+  workers: { component: "Workers", requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();
 
 const RouteComponent = defineAsyncComponent({
-  loader: () =>
-    import(`@/pages/${routeComponentObj.component}.vue`)
+  loader: () => import(`@/pages/${routeComponentObj.component}.vue`),
 });
 
 function getRouteComponent() {

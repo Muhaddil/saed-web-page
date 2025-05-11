@@ -8,7 +8,9 @@ const $q = useQuasar();
 //   $q.dark.isActive ? "Modo claro" : "Modo oscuro"
 // );
 
-const themeIcon = computed(() => ($q.dark.isActive ? "fas fa-sun" : "fas fa-moon"));
+const themeIcon = computed(() =>
+  $q.dark.isActive ? "fas fa-sun" : "fas fa-moon",
+);
 
 function toggleTheme() {
   const isDark = $q.dark.isActive;
@@ -23,8 +25,8 @@ if (initialTheme === "dark") {
   $q.dark.set(false);
 }
 
-const storedTheme = localStorage.getItem('theme');
-if (storedTheme === 'dark') $q.dark.set(true);
+const storedTheme = localStorage.getItem("theme");
+if (storedTheme === "dark") $q.dark.set(true);
 </script>
 
 <template>

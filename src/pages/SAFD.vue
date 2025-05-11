@@ -1,33 +1,49 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref, onMounted, watch } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
+const language = ref("es");
 // const slide = ref(1);
 // const autoplay = ref(true);
 
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 
 const forms = ref([
-  { id: 1, title: 'Formulario 1', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform1.html' },
-  { id: 2, title: 'Formulario 2', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform2.html' },
-  { id: 3, title: 'Formulario 3', description: 'Formulario de postulación.', link: 'https://muhaddil.github.io/simple-form-sender/safdform3.html' },
+  {
+    id: 1,
+    title: "Formulario 1",
+    description: "Formulario de postulación.",
+    link: "https://muhaddil.github.io/simple-form-sender/safdform1.html",
+  },
+  {
+    id: 2,
+    title: "Formulario 2",
+    description: "Formulario de postulación.",
+    link: "https://muhaddil.github.io/simple-form-sender/safdform2.html",
+  },
+  {
+    id: 3,
+    title: "Formulario 3",
+    description: "Formulario de postulación.",
+    link: "https://muhaddil.github.io/simple-form-sender/safdform3.html",
+  },
 ]);
 
 const selectedForm = ref();
 
 function randomizeForm() {
-  selectedForm.value = forms.value[Math.floor(Math.random() * forms.value.length)];
+  selectedForm.value =
+    forms.value[Math.floor(Math.random() * forms.value.length)];
 }
 
 onMounted(() => {
-  const storedForm = localStorage.getItem('selectedFormSAFD');
+  const storedForm = localStorage.getItem("selectedFormSAFD");
   if (storedForm) {
     selectedForm.value = JSON.parse(storedForm);
   } else {
@@ -37,12 +53,12 @@ onMounted(() => {
 
 watch(selectedForm, (newForm) => {
   if (newForm) {
-    localStorage.setItem('selectedFormSAFD', JSON.stringify(newForm));
+    localStorage.setItem("selectedFormSAFD", JSON.stringify(newForm));
   }
 });
 
 const modalVisible = ref(false);
-const modalImage = ref('');
+const modalImage = ref("");
 
 function openModal(imageSrc: string) {
   modalImage.value = imageSrc;
@@ -51,20 +67,19 @@ function openModal(imageSrc: string) {
 
 function closeModal() {
   modalVisible.value = false;
-  modalImage.value = '';
+  modalImage.value = "";
 }
 </script>
 
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-header reveal elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAFD.png" alt="SAMS Logo">
+            <img src="/images/SAFD.png" alt="SAMS Logo" />
           </q-avatar>
           San Andreas Fire Department (SAFD)
         </q-toolbar-title>
@@ -74,70 +89,80 @@ function closeModal() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="promotions.html">
-          <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+          <a href="promotions.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <q-item clickable disable>
+          <q-item clickable disable>
             <q-item-section class="item-row">
               <span>
                 <q-icon name="fas fa-fire" class="icon" />
@@ -146,80 +171,105 @@ function closeModal() {
             </q-item-section>
           </q-item>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
-
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section id="info-section" class="info-section">
-          <h2>{{ language === 'es' ? 'San Andreas Fire Department' : 'San Andreas Fire Department' }}</h2>
+          <h2>
+            {{
+              language === "es"
+                ? "San Andreas Fire Department"
+                : "San Andreas Fire Department"
+            }}
+          </h2>
           <p v-if="language === 'es'">
-            El San Andreas Fire Department, también conocido como SAFD, es una institución pública que forma parte del
-            Gobierno de San Andreas, prestando servicio al Condado de Los Santos, el Condado de Blaine y todo el Estado
-            de San Andreas. Nuestro equipo está compuesto por bomberos, rescatistas y personal especializado en la
-            atención de emergencias, quienes se destacan por su profesionalismo, compromiso y dedicación a la protección
-            de la vida y la seguridad de los ciudadanos.
-            Contamos con infraestructura avanzada y equipamiento de última generación, lo que nos permite responder de
-            manera eficiente a incendios, desastres naturales y emergencias de diversa índole. Nos comprometemos al
-            entrenamiento constante y al desarrollo de nuevas estrategias de intervención para estar siempre preparados
-            ante cualquier situación.
-            El SAFD está dedicado a la mejora continua de sus operaciones, fomentando la colaboración con otras
-            instituciones y promoviendo la conciencia sobre la prevención de incendios y la seguridad comunitaria.
-            Nuestro compromiso es salvaguardar a la comunidad de San Andreas, trabajando con pasión y responsabilidad
-            por el bienestar de todos.
+            El San Andreas Fire Department, también conocido como SAFD, es una
+            institución pública que forma parte del Gobierno de San Andreas,
+            prestando servicio al Condado de Los Santos, el Condado de Blaine y
+            todo el Estado de San Andreas. Nuestro equipo está compuesto por
+            bomberos, rescatistas y personal especializado en la atención de
+            emergencias, quienes se destacan por su profesionalismo, compromiso
+            y dedicación a la protección de la vida y la seguridad de los
+            ciudadanos. Contamos con infraestructura avanzada y equipamiento de
+            última generación, lo que nos permite responder de manera eficiente
+            a incendios, desastres naturales y emergencias de diversa índole.
+            Nos comprometemos al entrenamiento constante y al desarrollo de
+            nuevas estrategias de intervención para estar siempre preparados
+            ante cualquier situación. El SAFD está dedicado a la mejora continua
+            de sus operaciones, fomentando la colaboración con otras
+            instituciones y promoviendo la conciencia sobre la prevención de
+            incendios y la seguridad comunitaria. Nuestro compromiso es
+            salvaguardar a la comunidad de San Andreas, trabajando con pasión y
+            responsabilidad por el bienestar de todos.
           </p>
           <p v-else>
-            The San Andreas Fire Department, also known as SAFD, is a public institution that is part of the
-            Government of San Andreas, serving Los Santos County, Blaine County, and the entire State
-            of San Andreas. Our team is made up of firefighters, rescuers, and emergency response personnel, who stand
-            out for their professionalism, commitment, and dedication to protecting the lives and safety of citizens.
-            We have advanced infrastructure and state-of-the-art equipment, which allows us to respond efficiently to
-            fires, natural disasters, and emergencies of various kinds. We are committed to
-            constant training and the development of new intervention strategies to always be prepared
-            for any situation.
-            The SAFD is dedicated to the continuous improvement of its operations, fostering collaboration with other
-            institutions, and promoting awareness about fire prevention and community safety.
-            Our commitment is to safeguard the community of San Andreas, working with passion and responsibility
-            for the well-being of all. </p>
+            The San Andreas Fire Department, also known as SAFD, is a public
+            institution that is part of the Government of San Andreas, serving
+            Los Santos County, Blaine County, and the entire State of San
+            Andreas. Our team is made up of firefighters, rescuers, and
+            emergency response personnel, who stand out for their
+            professionalism, commitment, and dedication to protecting the lives
+            and safety of citizens. We have advanced infrastructure and
+            state-of-the-art equipment, which allows us to respond efficiently
+            to fires, natural disasters, and emergencies of various kinds. We
+            are committed to constant training and the development of new
+            intervention strategies to always be prepared for any situation. The
+            SAFD is dedicated to the continuous improvement of its operations,
+            fostering collaboration with other institutions, and promoting
+            awareness about fire prevention and community safety. Our commitment
+            is to safeguard the community of San Andreas, working with passion
+            and responsibility for the well-being of all.
+          </p>
         </section>
 
         <!-- <section class="carousel-section">
@@ -240,56 +290,91 @@ function closeModal() {
 
         <section id="random-form-section" class="care-section q-pa-md">
           <h2 class="text-center text-primary q-mb-lg">
-            {{ language === 'es' ? 'Postula Aquí' : 'Apply Here' }}
+            {{ language === "es" ? "Postula Aquí" : "Apply Here" }}
           </h2>
-          <div class="q-pa-md flex flex-wrap justify-center q-gutter-md items-center">
+          <div
+            class="q-pa-md flex flex-wrap justify-center q-gutter-md items-center"
+          >
             <div class="form-image-container">
-              <q-card flat bordered class="image-card"
-                @click="openModal('./images/safd/safd.png')">
-                <img src="/images/safd/safd.png"
-                  alt="Form Side Image" class="form-side-image" />
+              <q-card
+                flat
+                bordered
+                class="image-card"
+                @click="openModal('./images/safd/safd.png')"
+              >
+                <img
+                  src="/images/safd/safd.png"
+                  alt="Form Side Image"
+                  class="form-side-image"
+                />
               </q-card>
-
             </div>
 
             <q-card class="q-pa-md animated-card form-main-card" bordered flat>
               <q-card-section class="text-center">
                 <div class="text-h5 text-bold">{{ selectedForm?.title }}</div>
-                <div class="text-subtitle2 text-grey-7 q-mt-sm">{{ selectedForm?.description }}</div>
+                <div class="text-subtitle2 text-grey-7 q-mt-sm">
+                  {{ selectedForm?.description }}
+                </div>
               </q-card-section>
               <q-card-actions align="center" class="q-mt-md">
                 <a :href="selectedForm?.link">
-                  <q-btn :to="selectedForm?.link" color="primary" label="Abrir" icon="open_in_new" />
+                  <q-btn
+                    :to="selectedForm?.link"
+                    color="primary"
+                    label="Abrir"
+                    icon="open_in_new"
+                  />
                 </a>
               </q-card-actions>
             </q-card>
 
             <div class="form-image-container">
-              <q-card flat bordered class="image-card" @click="openModal('./images/safd/safd.png')">
-                <img src="/images/safd/safd.png" alt="Form Side Image" class="form-side-image" /> </q-card>
+              <q-card
+                flat
+                bordered
+                class="image-card"
+                @click="openModal('./images/safd/safd.png')"
+              >
+                <img
+                  src="/images/safd/safd.png"
+                  alt="Form Side Image"
+                  class="form-side-image"
+                />
+              </q-card>
             </div>
           </div>
         </section>
 
-        <section id="form-image-container-full" class="form-image-container-full">
+        <section
+          id="form-image-container-full"
+          class="form-image-container-full"
+        >
           <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
             <div class="form-image-container-full">
               <img :src="modalImage" class="full-image" />
-              <q-btn icon="close" flat round class="close-btn" @click="closeModal" />
+              <q-btn
+                icon="close"
+                flat
+                round
+                class="close-btn"
+                @click="closeModal"
+              />
             </div>
           </q-dialog>
         </section>
-
       </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Emergency Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
-
   </q-layout>
 </template>
 
@@ -302,7 +387,9 @@ function closeModal() {
 .form-main-card {
   max-width: 400px;
   width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .form-main-card:hover {
@@ -325,7 +412,9 @@ function closeModal() {
 .image-card {
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .image-card:hover {
@@ -377,7 +466,9 @@ function closeModal() {
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;

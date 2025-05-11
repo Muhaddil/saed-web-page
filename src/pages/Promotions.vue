@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref, computed, watch } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 interface Ascenso {
   id: number;
@@ -13,56 +13,311 @@ interface Ascenso {
 }
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
-const searchQuery = ref('');
+const language = ref("es");
+const searchQuery = ref("");
 const showFavorites = ref(false);
 
 const allCategorias = ref<string[]>([
-  '19/04/2025 - 03/05/2025', '05/04/2025 - 19/04/2025',
-  '23/03/2025 - 05/04/2025', '08/03/2025 - 23/03/2025', '22/02/2025 - 08/03/2025', '09/02/2025 - 22/02/2025',
-  '25/01/2025 - 09/02/2025', '11/01/2025 - 25/01/2025', '28/12/24 - 11/01/25',
-  'Ascensos Extraordinarios', '14/12/2024 - 28/12/2024'
+  "19/04/2025 - 03/05/2025",
+  "05/04/2025 - 19/04/2025",
+  "23/03/2025 - 05/04/2025",
+  "08/03/2025 - 23/03/2025",
+  "22/02/2025 - 08/03/2025",
+  "09/02/2025 - 22/02/2025",
+  "25/01/2025 - 09/02/2025",
+  "11/01/2025 - 25/01/2025",
+  "28/12/24 - 11/01/25",
+  "Ascensos Extraordinarios",
+  "14/12/2024 - 28/12/2024",
 ]);
 const categorias = ref<string[]>([...allCategorias.value]);
-const categoriaSeleccionada = ref<string>('');
+const categoriaSeleccionada = ref<string>("");
 
-const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
-  { id: 29, nombre: 'Levi Whitlock', rango: 'Supervisor General', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
-  { id: 30, nombre: 'Ethan Castillo', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
-  { id: 31, nombre: 'Manolo Trabuko', rango: 'Especialista', foto: 'images/NotAvailable.webp', categoria: '19/04/2025 - 03/05/2025', fecha: '03/05/2025', favorite: false },
-  { id: 27, nombre: 'Levi Whitlock', rango: 'Cirujano General', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
-  { id: 28, nombre: 'Ethan Castillo', rango: 'Médico', foto: 'images/NotAvailable.webp', categoria: '05/04/2025 - 19/04/2025', fecha: '19/04/2025', favorite: false },
-  { id: 25, nombre: 'Ethan Castillo', rango: 'Paramédico', foto: 'images/NotAvailable.webp', categoria: '23/03/2025 - 05/04/2025', fecha: '05/04/2025', favorite: false },
-  { id: 26, nombre: 'Aless Vannicelli', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '23/03/2025 - 05/04/2025', fecha: '05/04/2025', favorite: false },
-  { id: 23, nombre: 'Ethan Castillo', rango: 'Enfermero Licenciado', foto: 'images/NotAvailable.webp', categoria: '08/03/2025 - 23/03/2025', fecha: '23/03/2025', favorite: false },
-  { id: 24, nombre: 'Aless Vannicelli', rango: 'Médico', foto: 'images/NotAvailable.webp', categoria: '08/03/2025 - 23/03/2025', fecha: '23/03/2025', favorite: false },
-  { id: 16, nombre: 'Nicole Blackwood', rango: 'Médica Experimentada', foto: 'images/employees/Nicole.png', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 17, nombre: 'Alice Diangelis', rango: 'Supervisora General', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 18, nombre: 'Aless Vannicelli', rango: 'Paramédico', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 19, nombre: 'Manolo Trabuko', rango: 'Cirujano General', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 20, nombre: 'Ethan Castillo', rango: 'Enfermero', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 21, nombre: 'Finnegan Jefferson', rango: 'Enfermero', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 22, nombre: 'Pol Balaguer', rango: 'Enfermero Licenciado', foto: 'images/NotAvailable.webp', categoria: '22/02/2025 - 08/03/2025', fecha: '08/03/2025', favorite: false },
-  { id: 14, nombre: 'Nicole Blackwood', rango: 'Médica', foto: 'images/employees/Nicole.png', categoria: '09/02/2025 - 22/02/2025', fecha: '22/02/2025', favorite: false },
-  { id: 15, nombre: 'Enzo Fontana', rango: 'Enfermero Licencaido', foto: 'images/NotAvailable.webp', categoria: '09/02/2025 - 22/02/2025', fecha: '22/02/2025', favorite: false },
-  { id: 12, nombre: 'Nicole Blackwood', rango: 'Paramédica', foto: 'images/employees/Nicole.png', categoria: '25/01/2025 - 09/02/2025', fecha: '09/02/2025', favorite: false },
-  { id: 13, nombre: 'Manolo Trabuko', rango: 'Doctor experimentado', foto: 'images/NotAvailable.webp', categoria: '25/01/2025 - 09/02/2025', fecha: '09/02/2025', favorite: false },
-  { id: 7, nombre: 'Nicole Blackwood', rango: 'Enfermera Licenciada', foto: 'images/employees/Nicole.png', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
-  { id: 8, nombre: 'Mike Foden', rango: 'Enfermero Licenciado', foto: 'images/employees/Mike.png', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
-  { id: 9, nombre: 'Antonio Sun', rango: 'Enfermero Licenciado', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
-  { id: 10, nombre: 'Manolo Trabuko', rango: 'Doctor', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
-  { id: 11, nombre: 'Noelia Rivas', rango: 'Enfermera', foto: 'images/NotAvailable.webp', categoria: '11/01/2025 - 25/01/2025', fecha: '25/01/2025', favorite: false },
-  { id: 1, nombre: 'Shila Sanchéz', rango: 'Directora Adjunto / Recursos Humanos', foto: 'images/employees/Shila.png', categoria: 'Ascensos Extraordinarios', fecha: '04/01/2025', favorite: false },
-  { id: 2, nombre: 'Mike Foden', rango: 'Enfermero', foto: 'images/employees/Mike.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
-  { id: 3, nombre: 'Lyra DiRosa', rango: 'Médico Experimentado', foto: 'images/employees/Lyra.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
-  { id: 4, nombre: 'Axel Martínez', rango: 'Médico', foto: 'images/employees/Axel.png', categoria: '14/12/24 - 28/12/2024', fecha: '28/12/2024', favorite: false },
-  { id: 5, nombre: 'Manolo Trabuko', rango: 'Médico Experimentado', foto: 'images/NotAvailable.webp', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
-  { id: 6, nombre: 'Nicole Blackwood', rango: 'Enfermera', foto: 'images/employees/Nicole.png', categoria: '28/12/24 - 11/01/25', fecha: '28/12/2024', favorite: false },
+  {
+    id: 29,
+    nombre: "Levi Whitlock",
+    rango: "Supervisor General",
+    foto: "images/NotAvailable.webp",
+    categoria: "19/04/2025 - 03/05/2025",
+    fecha: "03/05/2025",
+    favorite: false,
+  },
+  {
+    id: 30,
+    nombre: "Ethan Castillo",
+    rango: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    categoria: "19/04/2025 - 03/05/2025",
+    fecha: "03/05/2025",
+    favorite: false,
+  },
+  {
+    id: 31,
+    nombre: "Manolo Trabuko",
+    rango: "Especialista",
+    foto: "images/NotAvailable.webp",
+    categoria: "19/04/2025 - 03/05/2025",
+    fecha: "03/05/2025",
+    favorite: false,
+  },
+  {
+    id: 27,
+    nombre: "Levi Whitlock",
+    rango: "Cirujano General",
+    foto: "images/NotAvailable.webp",
+    categoria: "05/04/2025 - 19/04/2025",
+    fecha: "19/04/2025",
+    favorite: false,
+  },
+  {
+    id: 28,
+    nombre: "Ethan Castillo",
+    rango: "Médico",
+    foto: "images/NotAvailable.webp",
+    categoria: "05/04/2025 - 19/04/2025",
+    fecha: "19/04/2025",
+    favorite: false,
+  },
+  {
+    id: 25,
+    nombre: "Ethan Castillo",
+    rango: "Paramédico",
+    foto: "images/NotAvailable.webp",
+    categoria: "23/03/2025 - 05/04/2025",
+    fecha: "05/04/2025",
+    favorite: false,
+  },
+  {
+    id: 26,
+    nombre: "Aless Vannicelli",
+    rango: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    categoria: "23/03/2025 - 05/04/2025",
+    fecha: "05/04/2025",
+    favorite: false,
+  },
+  {
+    id: 23,
+    nombre: "Ethan Castillo",
+    rango: "Enfermero Licenciado",
+    foto: "images/NotAvailable.webp",
+    categoria: "08/03/2025 - 23/03/2025",
+    fecha: "23/03/2025",
+    favorite: false,
+  },
+  {
+    id: 24,
+    nombre: "Aless Vannicelli",
+    rango: "Médico",
+    foto: "images/NotAvailable.webp",
+    categoria: "08/03/2025 - 23/03/2025",
+    fecha: "23/03/2025",
+    favorite: false,
+  },
+  {
+    id: 16,
+    nombre: "Nicole Blackwood",
+    rango: "Médica Experimentada",
+    foto: "images/employees/Nicole.png",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 17,
+    nombre: "Alice Diangelis",
+    rango: "Supervisora General",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 18,
+    nombre: "Aless Vannicelli",
+    rango: "Paramédico",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 19,
+    nombre: "Manolo Trabuko",
+    rango: "Cirujano General",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 20,
+    nombre: "Ethan Castillo",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 21,
+    nombre: "Finnegan Jefferson",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 22,
+    nombre: "Pol Balaguer",
+    rango: "Enfermero Licenciado",
+    foto: "images/NotAvailable.webp",
+    categoria: "22/02/2025 - 08/03/2025",
+    fecha: "08/03/2025",
+    favorite: false,
+  },
+  {
+    id: 14,
+    nombre: "Nicole Blackwood",
+    rango: "Médica",
+    foto: "images/employees/Nicole.png",
+    categoria: "09/02/2025 - 22/02/2025",
+    fecha: "22/02/2025",
+    favorite: false,
+  },
+  {
+    id: 15,
+    nombre: "Enzo Fontana",
+    rango: "Enfermero Licencaido",
+    foto: "images/NotAvailable.webp",
+    categoria: "09/02/2025 - 22/02/2025",
+    fecha: "22/02/2025",
+    favorite: false,
+  },
+  {
+    id: 12,
+    nombre: "Nicole Blackwood",
+    rango: "Paramédica",
+    foto: "images/employees/Nicole.png",
+    categoria: "25/01/2025 - 09/02/2025",
+    fecha: "09/02/2025",
+    favorite: false,
+  },
+  {
+    id: 13,
+    nombre: "Manolo Trabuko",
+    rango: "Doctor experimentado",
+    foto: "images/NotAvailable.webp",
+    categoria: "25/01/2025 - 09/02/2025",
+    fecha: "09/02/2025",
+    favorite: false,
+  },
+  {
+    id: 7,
+    nombre: "Nicole Blackwood",
+    rango: "Enfermera Licenciada",
+    foto: "images/employees/Nicole.png",
+    categoria: "11/01/2025 - 25/01/2025",
+    fecha: "25/01/2025",
+    favorite: false,
+  },
+  {
+    id: 8,
+    nombre: "Mike Foden",
+    rango: "Enfermero Licenciado",
+    foto: "images/employees/Mike.png",
+    categoria: "11/01/2025 - 25/01/2025",
+    fecha: "25/01/2025",
+    favorite: false,
+  },
+  {
+    id: 9,
+    nombre: "Antonio Sun",
+    rango: "Enfermero Licenciado",
+    foto: "images/NotAvailable.webp",
+    categoria: "11/01/2025 - 25/01/2025",
+    fecha: "25/01/2025",
+    favorite: false,
+  },
+  {
+    id: 10,
+    nombre: "Manolo Trabuko",
+    rango: "Doctor",
+    foto: "images/NotAvailable.webp",
+    categoria: "11/01/2025 - 25/01/2025",
+    fecha: "25/01/2025",
+    favorite: false,
+  },
+  {
+    id: 11,
+    nombre: "Noelia Rivas",
+    rango: "Enfermera",
+    foto: "images/NotAvailable.webp",
+    categoria: "11/01/2025 - 25/01/2025",
+    fecha: "25/01/2025",
+    favorite: false,
+  },
+  {
+    id: 1,
+    nombre: "Shila Sanchéz",
+    rango: "Directora Adjunto / Recursos Humanos",
+    foto: "images/employees/Shila.png",
+    categoria: "Ascensos Extraordinarios",
+    fecha: "04/01/2025",
+    favorite: false,
+  },
+  {
+    id: 2,
+    nombre: "Mike Foden",
+    rango: "Enfermero",
+    foto: "images/employees/Mike.png",
+    categoria: "14/12/24 - 28/12/2024",
+    fecha: "28/12/2024",
+    favorite: false,
+  },
+  {
+    id: 3,
+    nombre: "Lyra DiRosa",
+    rango: "Médico Experimentado",
+    foto: "images/employees/Lyra.png",
+    categoria: "14/12/24 - 28/12/2024",
+    fecha: "28/12/2024",
+    favorite: false,
+  },
+  {
+    id: 4,
+    nombre: "Axel Martínez",
+    rango: "Médico",
+    foto: "images/employees/Axel.png",
+    categoria: "14/12/24 - 28/12/2024",
+    fecha: "28/12/2024",
+    favorite: false,
+  },
+  {
+    id: 5,
+    nombre: "Manolo Trabuko",
+    rango: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    categoria: "28/12/24 - 11/01/25",
+    fecha: "28/12/2024",
+    favorite: false,
+  },
+  {
+    id: 6,
+    nombre: "Nicole Blackwood",
+    rango: "Enfermera",
+    foto: "images/employees/Nicole.png",
+    categoria: "28/12/24 - 11/01/25",
+    fecha: "28/12/2024",
+    favorite: false,
+  },
 ]);
 
 function switchLanguage() {
-  language.value = language.value === 'es' ? 'en' : 'es';
+  language.value = language.value === "es" ? "en" : "es";
 }
 
 function toggleLeftDrawer() {
@@ -78,9 +333,9 @@ const orderedAscensos = computed(() => {
 const filteredAscensos = computed(() => {
   let filtered = orderedAscensos.value;
 
-  if (categoriaSeleccionada.value && categoriaSeleccionada.value !== 'Todos') {
+  if (categoriaSeleccionada.value && categoriaSeleccionada.value !== "Todos") {
     filtered = filtered.filter(
-      (ascenso) => ascenso.categoria === categoriaSeleccionada.value
+      (ascenso) => ascenso.categoria === categoriaSeleccionada.value,
     );
   }
 
@@ -90,7 +345,7 @@ const filteredAscensos = computed(() => {
       (ascenso) =>
         ascenso.nombre.toLowerCase().includes(query) ||
         ascenso.rango.toLowerCase().includes(query) ||
-        ascenso.categoria.toLowerCase().includes(query)
+        ascenso.categoria.toLowerCase().includes(query),
     );
   }
 
@@ -116,19 +371,18 @@ ascensos.value.forEach((ascenso) => {
 });
 
 const saveFavorites = () => {
-  const favorites = ascensos.value.reduce((acc, ascenso) => {
-    acc[ascenso.id] = ascenso.favorite;
-    return acc;
-  }, {} as Record<number, boolean>);
+  const favorites = ascensos.value.reduce(
+    (acc, ascenso) => {
+      acc[ascenso.id] = ascenso.favorite;
+      return acc;
+    },
+    {} as Record<number, boolean>,
+  );
 
-  localStorage.setItem('favorites', JSON.stringify(favorites));
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
-watch(
-  ascensos,
-  () => saveFavorites(),
-  { deep: true }
-);
+watch(ascensos, () => saveFavorites(), { deep: true });
 
 const toggleFavorite = (ascenso: Ascenso) => {
   ascenso.favorite = !ascenso.favorite;
@@ -141,14 +395,14 @@ function filterFn(val: string, update: (callback: () => void) => void) {
       categorias.value = [...allCategorias.value];
     } else {
       categorias.value = allCategorias.value.filter((categoria) =>
-        categoria.toLowerCase().includes(query)
+        categoria.toLowerCase().includes(query),
       );
     }
   });
 }
 
 const modalVisible = ref(false);
-const modalImage = ref('');
+const modalImage = ref("");
 
 function openModal(imageSrc: string) {
   modalImage.value = imageSrc;
@@ -157,7 +411,7 @@ function openModal(imageSrc: string) {
 
 function closeModal() {
   modalVisible.value = false;
-  modalImage.value = '';
+  modalImage.value = "";
 }
 </script>
 
@@ -169,7 +423,7 @@ function closeModal() {
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAMSlogo.png" alt="SAMS Logo">
+            <img src="/images/SAMSlogo.png" alt="SAMS Logo" />
           </q-avatar>
           San Andreas Medical Services (SAMS)
         </q-toolbar-title>
@@ -179,172 +433,245 @@ function closeModal() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+
+          <q-item clickable disable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
+                <q-icon name="fa-solid fa-file-contract" class="icon" />
+                Ascensos
               </span>
             </q-item-section>
           </q-item>
-        </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="workers.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-user" class="icon" />
+                  Personal
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <q-item clickable disable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="workers.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-user" class="icon" />
-                Personal
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
-
-<q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-    <div class="absolute-bottom bg-transparent">
-      <q-avatar size="76px" class="q-mb-sm">
-        <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-      </q-avatar>
-      <div class="text-weight-bold">San Andreas Emergency Department</div>
-      <div>@muhaddil</div>
-    </div>
-  </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" icon="fas fa-language" label="Cambiar idioma" color="secondary" size="sm"
-            aria-label="Cambiar idioma" />
+          <q-btn
+            @click="switchLanguage"
+            icon="fas fa-language"
+            label="Cambiar idioma"
+            color="secondary"
+            size="sm"
+            aria-label="Cambiar idioma"
+          />
         </div>
 
         <section id="ascensos">
-          <h1>{{ language === 'es' ? '¡Ascensos del SAMS!' : 'SAMS Promotions' }}</h1>
+          <h1>
+            {{ language === "es" ? "¡Ascensos del SAMS!" : "SAMS Promotions" }}
+          </h1>
 
-          <q-select v-model="categoriaSeleccionada" :options="categorias" @filter="filterFn"
-            @update:model-value="restoreCategorias" transition-show="jump-up" transition-hide="jump-up"
-            :label="language === 'es' ? 'Filtrar por categoría' : 'Filter by category'" emit-value map-options
-            class="q-mb-md" use-input />
+          <q-select
+            v-model="categoriaSeleccionada"
+            :options="categorias"
+            @filter="filterFn"
+            @update:model-value="restoreCategorias"
+            transition-show="jump-up"
+            transition-hide="jump-up"
+            :label="
+              language === 'es' ? 'Filtrar por categoría' : 'Filter by category'
+            "
+            emit-value
+            map-options
+            class="q-mb-md"
+            use-input
+          />
 
           <div class="botonera">
-            <q-btn :label="language === 'es' ? 'Quitar filtro' : 'Remove filters'" color="primary"
-              @click="categoriaSeleccionada = ''" style="margin-right: 8px;" />
-            <q-btn @click="toggleFavoriteFilter"
-              :label="showFavorites ? (language === 'es' ? 'Mostrar Todos' : 'Show All') : (language === 'es' ? 'Mostrar Favoritos' : 'Show Favorites')"
-              color="primary" />
+            <q-btn
+              :label="language === 'es' ? 'Quitar filtro' : 'Remove filters'"
+              color="primary"
+              @click="categoriaSeleccionada = ''"
+              style="margin-right: 8px"
+            />
+            <q-btn
+              @click="toggleFavoriteFilter"
+              :label="
+                showFavorites
+                  ? language === 'es'
+                    ? 'Mostrar Todos'
+                    : 'Show All'
+                  : language === 'es'
+                    ? 'Mostrar Favoritos'
+                    : 'Show Favorites'
+              "
+              color="primary"
+            />
           </div>
 
-          <div class="care-cards" style="margin-top: 10px;">
-            <div v-for="(ascenso) in filteredAscensos" :key="ascenso.id" class="ascenso-item">
+          <div class="care-cards" style="margin-top: 10px">
+            <div
+              v-for="ascenso in filteredAscensos"
+              :key="ascenso.id"
+              class="ascenso-item"
+            >
               <q-card flat bordered>
                 <q-card-section @click="openModal(ascenso.foto)">
                   <q-img :src="ascenso.foto" class="ascenso-img" />
                   <div class="text-center">
                     <p class="nombre">{{ ascenso.nombre }}</p>
-                    <p>{{ language === 'es' ? 'Ascendido a:' : 'Promoted to:' }} {{ ascenso.rango }}</p>
-                    <p>{{ language === 'es' ? 'Fecha:' : 'Date:' }} {{ ascenso.fecha }}</p>
+                    <p>
+                      {{ language === "es" ? "Ascendido a:" : "Promoted to:" }}
+                      {{ ascenso.rango }}
+                    </p>
+                    <p>
+                      {{ language === "es" ? "Fecha:" : "Date:" }}
+                      {{ ascenso.fecha }}
+                    </p>
                   </div>
                 </q-card-section>
                 <br />
-                <q-btn flat :icon="ascenso.favorite ? 'favorite' : 'favorite_border'" @click="toggleFavorite(ascenso)"
-                  :class="{ 'favorite': ascenso.favorite }" class="favorite-button" />
+                <q-btn
+                  flat
+                  :icon="ascenso.favorite ? 'favorite' : 'favorite_border'"
+                  @click="toggleFavorite(ascenso)"
+                  :class="{ favorite: ascenso.favorite }"
+                  class="favorite-button"
+                />
               </q-card>
             </div>
           </div>
         </section>
 
-        <section id="form-image-container-full" class="form-image-container-full">
+        <section
+          id="form-image-container-full"
+          class="form-image-container-full"
+        >
           <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
             <div class="form-image-container-full">
               <img :src="modalImage" class="full-image" />
-              <q-btn icon="close" flat round class="close-btn" @click="closeModal" />
+              <q-btn
+                icon="close"
+                flat
+                round
+                class="close-btn"
+                @click="closeModal"
+              />
             </div>
           </q-dialog>
         </section>
-
       </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md footer-content text-center">
         <img src="/images/SAEDLogo.png" alt="SAED Logo" class="logofooter" />
-        <p>&copy; 2025 San Andreas Emergency Department. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2025 San Andreas Emergency Department. Todos los derechos
+          reservados.
+        </p>
       </div>
     </q-footer>
   </q-layout>
@@ -412,7 +739,9 @@ function closeModal() {
 .q-card {
   cursor: pointer;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   max-width: 300px;
   margin: 0 auto;
@@ -489,7 +818,9 @@ q-item-section span {
   cursor: pointer;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
   width: 100%;
   height: 100%;
   max-width: 280px;
@@ -511,7 +842,9 @@ q-item-section span {
   display: block;
   border-color: yellowgreen;
   border-width: 2px;
-  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease;
 }
 
 // .ascenso-img :hover {
