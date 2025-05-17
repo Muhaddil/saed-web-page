@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-import ThemeSwitch from '@/components/ThemeSwitch.vue';
+import { ref, computed, watch } from "vue";
+import ThemeSwitch from "@/components/ThemeSwitch.vue";
 
 interface Trabajador {
   id: number;
   nombre: string;
   posicion: string;
   foto: string;
-  department: 'sams' | 'safd';
+  department: "sams" | "safd";
   favorite: boolean;
   placa: string;
   antiguedad?: string;
@@ -15,43 +15,159 @@ interface Trabajador {
 }
 
 const leftDrawerOpen = ref(false);
-const language = ref('es');
-const searchQuery = ref('');
+const language = ref("es");
+const searchQuery = ref("");
 const showFavorites = ref(false);
-const selectedDepartment = ref<'sams' | 'safd'>('sams');
+const selectedDepartment = ref<"sams" | "safd">("sams");
 
-const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const trabajadores = ref<Trabajador[]>([
   // SAMS
-  { id: 1, nombre: 'Shila Sánchez', posicion: 'Directora Adjunta', foto: 'images/employees/Shila.png', department: 'sams', placa: 'MED-2937', favorite: false, grade: 18 },
-  { id: 2, nombre: 'Andres Fernandez', posicion: 'Auxiliar', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-4220', favorite: false, grade: 2 },
-  { id: 3, nombre: 'Ethan Castillo', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 5 },
-  { id: 4, nombre: 'Gary Adams', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-XXXX', favorite: false, grade: 7 },
-  { id: 5, nombre: 'Lia Walker', posicion: 'Médico', foto: 'images/employees/Nicole.png', department: 'sams', placa: 'MED-2764', favorite: false, grade: 7 },
-  { id: 6, nombre: 'Manolo Trabuko', posicion: 'Médico Experimentado', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-2406', favorite: false, grade: 14 },
-  { id: 7, nombre: 'Alice Rosse', posicion: 'Supervisor General', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-3057', favorite: false, grade: 16 },
-  { id: 8, nombre: 'Sergio Martínez', posicion: 'Director', foto: 'images/employees/Sergio.png', department: 'sams', placa: 'MED-4581', favorite: false, grade: 19 },
-  { id: 9, nombre: 'Levi Whitlock', posicion: 'Supervisor General', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-6255', favorite: false, grade: 16 },
-  { id: 10, nombre: 'Antonio Morales', posicion: 'Auxiliar', foto: 'images/NotAvailable.webp', department: 'sams', placa: 'MED-6255', favorite: false, grade: 2 },
+  {
+    id: 1,
+    nombre: "Shila Sánchez",
+    posicion: "Directora Adjunta",
+    foto: "images/employees/Shila.png",
+    department: "sams",
+    placa: "MED-2937",
+    favorite: false,
+    grade: 18,
+  },
+  {
+    id: 2,
+    nombre: "Andres Fernandez",
+    posicion: "Auxiliar",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-4220",
+    favorite: false,
+    grade: 2,
+  },
+  {
+    id: 3,
+    nombre: "Ethan Castillo",
+    posicion: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-XXXX",
+    favorite: false,
+    grade: 5,
+  },
+  {
+    id: 4,
+    nombre: "Gary Adams",
+    posicion: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-XXXX",
+    favorite: false,
+    grade: 7,
+  },
+  {
+    id: 5,
+    nombre: "Lia Walker",
+    posicion: "Médico",
+    foto: "images/employees/Nicole.png",
+    department: "sams",
+    placa: "MED-2764",
+    favorite: false,
+    grade: 7,
+  },
+  {
+    id: 6,
+    nombre: "Manolo Trabuko",
+    posicion: "Médico Experimentado",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-2406",
+    favorite: false,
+    grade: 14,
+  },
+  {
+    id: 7,
+    nombre: "Alice Rosse",
+    posicion: "Supervisor General",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-3057",
+    favorite: false,
+    grade: 16,
+  },
+  {
+    id: 8,
+    nombre: "Sergio Martínez",
+    posicion: "Director",
+    foto: "images/employees/Sergio.png",
+    department: "sams",
+    placa: "MED-4581",
+    favorite: false,
+    grade: 19,
+  },
+  {
+    id: 9,
+    nombre: "Levi Whitlock",
+    posicion: "Supervisor General",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-6255",
+    favorite: false,
+    grade: 16,
+  },
+  {
+    id: 10,
+    nombre: "Antonio Morales",
+    posicion: "Auxiliar",
+    foto: "images/NotAvailable.webp",
+    department: "sams",
+    placa: "MED-6255",
+    favorite: false,
+    grade: 2,
+  },
 
   // SAFD
-  { id: 101, nombre: 'Sergio Martínez', posicion: 'Director', foto: 'images/employees/Sergio2.png', department: 'safd', placa: 'FIRE-4581', favorite: false },
-  { id: 102, nombre: 'Evaristo García', posicion: 'Jefe de Bomberos', foto: 'images/NotAvailable.webp', department: 'safd', placa: 'FIRE-2269', favorite: false },
-  { id: 103, nombre: 'Johnn Nolan', posicion: 'Sargento', foto: 'images/fotosemana/fotosemana10.png', department: 'safd', placa: 'FIRE-8998', favorite: false },
+  {
+    id: 101,
+    nombre: "Sergio Martínez",
+    posicion: "Director",
+    foto: "images/employees/Sergio2.png",
+    department: "safd",
+    placa: "FIRE-4581",
+    favorite: false,
+  },
+  {
+    id: 102,
+    nombre: "Evaristo García",
+    posicion: "Jefe de Bomberos",
+    foto: "images/NotAvailable.webp",
+    department: "safd",
+    placa: "FIRE-2269",
+    favorite: false,
+  },
+  {
+    id: 103,
+    nombre: "Johnn Nolan",
+    posicion: "Sargento",
+    foto: "images/fotosemana/fotosemana10.png",
+    department: "safd",
+    placa: "FIRE-8998",
+    favorite: false,
+  },
 ]);
 
 const filteredTrabajadores = computed(() => {
-  let filtered = trabajadores.value.filter(t => 
-    t.department === selectedDepartment.value &&
-    (showFavorites.value ? t.favorite : true)
+  let filtered = trabajadores.value.filter(
+    (t) =>
+      t.department === selectedDepartment.value &&
+      (showFavorites.value ? t.favorite : true),
   );
 
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
-    filtered = filtered.filter(t =>
-      t.nombre.toLowerCase().includes(query) ||
-      t.posicion.toLowerCase().includes(query) ||
-      t.placa.toLowerCase().includes(query)
+    filtered = filtered.filter(
+      (t) =>
+        t.nombre.toLowerCase().includes(query) ||
+        t.posicion.toLowerCase().includes(query) ||
+        t.placa.toLowerCase().includes(query),
     );
   }
 
@@ -60,30 +176,41 @@ const filteredTrabajadores = computed(() => {
   return filtered;
 });
 
-function switchLanguage() { language.value = language.value === 'es' ? 'en' : 'es'; }
+function switchLanguage() {
+  language.value = language.value === "es" ? "en" : "es";
+}
 
-function toggleLeftDrawer() { leftDrawerOpen.value = !leftDrawerOpen.value; }
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
+}
 
 const toggleFavorite = (trabajador: Trabajador) => {
   trabajador.favorite = !trabajador.favorite;
 };
 
-watch(trabajadores, () => {
-  const favorites = trabajadores.value.reduce((acc, t) => {
-    acc[t.id] = t.favorite;
-    return acc;
-  }, {} as Record<number, boolean>);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-}, { deep: true });
+watch(
+  trabajadores,
+  () => {
+    const favorites = trabajadores.value.reduce(
+      (acc, t) => {
+        acc[t.id] = t.favorite;
+        return acc;
+      },
+      {} as Record<number, boolean>,
+    );
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  },
+  { deep: true },
+);
 
-trabajadores.value.forEach(t => {
+trabajadores.value.forEach((t) => {
   if (savedFavorites[t.id] !== undefined) {
     t.favorite = savedFavorites[t.id];
   }
 });
 
 const modalVisible = ref(false);
-const modalImage = ref('');
+const modalImage = ref("");
 
 function openModal(imageSrc: string) {
   modalImage.value = imageSrc;
@@ -92,7 +219,7 @@ function openModal(imageSrc: string) {
 
 function closeModal() {
   modalVisible.value = false;
-  modalImage.value = '';
+  modalImage.value = "";
 }
 </script>
 
@@ -104,7 +231,7 @@ function closeModal() {
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="/images/SAEDLogo.png" alt="SAED Logo">
+            <img src="/images/SAEDLogo.png" alt="SAED Logo" />
           </q-avatar>
           SAED - Personal Activo
         </q-toolbar-title>
@@ -114,193 +241,261 @@ function closeModal() {
         </a>
 
         <a href="https://muhaddil.github.io/404.html">
-          <q-btn flat icon="fas fa-info-circle" aria-label="Información sobre SAED" />
+          <q-btn
+            flat
+            icon="fas fa-info-circle"
+            aria-label="Información sobre SAED"
+          />
         </a>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list>
-        <a href="/saed-web-page/">
-          <q-item clickable>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list>
+          <a href="/saed-web-page/">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-info-circle" class="icon" />
+                  Información General
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+
+          <a href="sams.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-hospital" class="icon" />
+                  SAMS
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+
+          <a href="promotions.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-file-contract" class="icon" />
+                  Ascensos
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+
+          <q-item clickable disable>
             <q-item-section class="item-row">
               <span>
-                <q-icon name="fas fa-info-circle" class="icon" />
-                Información General
+                <q-icon name="fa-solid fa-user" class="icon" />
+                Personal
               </span>
             </q-item-section>
           </q-item>
-        </a>
 
-        <a href="sams.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-hospital" class="icon" />
-                SAMS
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="photoweek.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fa-solid fa-camera" class="icon" />
+                  Foto de la Semana
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="promotions.html">
-        <q-item clickable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-file-contract" class="icon" />
-              Ascensos
-            </span>
-          </q-item-section>
-        </q-item>
-        </a>
+          <a href="safd.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-fire" class="icon" />
+                  SAFD
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <q-item clickable disable>
-          <q-item-section class="item-row">
-            <span>
-              <q-icon name="fa-solid fa-user" class="icon" />
-              Personal
-            </span>
-          </q-item-section>
-        </q-item>
+          <a href="faq.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-question-circle" class="icon" />
+                  FAQ
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
 
-        <a href="photoweek.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fa-solid fa-camera" class="icon" />
-                Foto de la Semana
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
+          <a href="contact.html">
+            <q-item clickable>
+              <q-item-section class="item-row">
+                <span>
+                  <q-icon name="fas fa-phone" class="icon" />
+                  Contacto
+                </span>
+              </q-item-section>
+            </q-item>
+          </a>
+        </q-list>
+      </q-scroll-area>
 
-        <a href="safd.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-fire" class="icon" />
-                SAFD
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-
-        <a href="faq.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-question-circle" class="icon" />
-                FAQ
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-
-        <a href="contact.html">
-          <q-item clickable>
-            <q-item-section class="item-row">
-              <span>
-                <q-icon name="fas fa-phone" class="icon" />
-                Contacto
-              </span>
-            </q-item-section>
-          </q-item>
-        </a>
-      </q-list>
-    </q-scroll-area>
-
-      <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-          <div class="absolute-bottom bg-transparent">
-            <q-avatar size="76px" class="q-mb-sm">
-              <img src="https://avatars.githubusercontent.com/u/151466679?v=4">
-            </q-avatar>
-            <div class="text-weight-bold">San Andreas Emergency Department</div>
-            <div>@muhaddil</div>
-          </div>
-        </q-img>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="76px" class="q-mb-sm">
+            <img src="https://avatars.githubusercontent.com/u/151466679?v=4" />
+          </q-avatar>
+          <div class="text-weight-bold">San Andreas Emergency Department</div>
+          <div>@muhaddil</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
         <div class="q-mb-md flex justify-between">
           <ThemeSwitch />
-          <q-btn @click="switchLanguage" 
-                :label="language === 'es' ? 'English' : 'Español'" 
-                color="secondary" 
-                icon="fas fa-language"/>
+          <q-btn
+            @click="switchLanguage"
+            :label="language === 'es' ? 'English' : 'Español'"
+            color="secondary"
+            icon="fas fa-language"
+          />
         </div>
 
         <section id="personal">
-          <h1>{{ language === 'es' ? 'Personal Activo' : 'Active Personnel' }}</h1>
+          <h1>
+            {{ language === "es" ? "Personal Activo" : "Active Personnel" }}
+          </h1>
 
-          <q-tabs v-model="selectedDepartment" inline-label class="text-primary q-mb-lg">
-            <q-tab name="sams" :label="language === 'es' ? 'Personal Médico' : 'Medical Staff'" />
-            <q-tab name="safd" :label="language === 'es' ? 'Cuerpo de Bomberos' : 'Fire Department'" />
+          <q-tabs
+            v-model="selectedDepartment"
+            inline-label
+            class="text-primary q-mb-lg"
+          >
+            <q-tab
+              name="sams"
+              :label="language === 'es' ? 'Personal Médico' : 'Medical Staff'"
+            />
+            <q-tab
+              name="safd"
+              :label="
+                language === 'es' ? 'Cuerpo de Bomberos' : 'Fire Department'
+              "
+            />
           </q-tabs>
 
-          <q-input v-model="searchQuery" 
-                  :placeholder="language === 'es' ? 'Buscar personal...' : 'Search staff...'" 
-                  outlined 
-                  class="q-mb-md">
+          <q-input
+            v-model="searchQuery"
+            :placeholder="
+              language === 'es' ? 'Buscar personal...' : 'Search staff...'
+            "
+            outlined
+            class="q-mb-md"
+          >
             <template v-slot:append>
               <q-icon name="search" />
             </template>
           </q-input>
 
           <div class="q-mb-md">
-            <q-toggle v-model="showFavorites" 
-                     :label="language === 'es' ? 'Mostrar solo favoritos' : 'Show favorites only'" 
-                     color="primary"/>
+            <q-toggle
+              v-model="showFavorites"
+              :label="
+                language === 'es'
+                  ? 'Mostrar solo favoritos'
+                  : 'Show favorites only'
+              "
+              color="primary"
+            />
           </div>
 
           <div class="row q-col-gutter-md">
-            <div v-for="trabajador in filteredTrabajadores" :key="trabajador.id" class="col-12 col-sm-6 col-md-4">
+            <div
+              v-for="trabajador in filteredTrabajadores"
+              :key="trabajador.id"
+              class="col-12 col-sm-6 col-md-4"
+            >
               <q-card class="department-card" :class="trabajador.department">
                 <q-card-section class="text-center">
                   <q-avatar size="120px" class="q-mb-sm">
-                    <img :src="trabajador.foto" @click="openModal(trabajador.foto)">
-                    <q-badge v-if="trabajador.favorite" floating color="red" icon="favorite" />
+                    <img
+                      :src="trabajador.foto"
+                      @click="openModal(trabajador.foto)"
+                    />
+                    <q-badge
+                      v-if="trabajador.favorite"
+                      floating
+                      color="red"
+                      icon="favorite"
+                    />
                   </q-avatar>
-                  
+
                   <div class="text-h6">{{ trabajador.nombre }}</div>
                   <div class="text-subtitle1">{{ trabajador.posicion }}</div>
                   <div class="text-caption q-mt-xs">
-                    {{ language === 'es' ? 'Placa:' : 'Badge:' }} {{ trabajador.placa }}
+                    {{ language === "es" ? "Placa:" : "Badge:" }}
+                    {{ trabajador.placa }}
                   </div>
                   <div class="text-caption" v-if="trabajador.antiguedad">
-                    {{ language === 'es' ? 'Antigüedad:' : 'Seniority:' }} {{ trabajador.antiguedad }}
+                    {{ language === "es" ? "Antigüedad:" : "Seniority:" }}
+                    {{ trabajador.antiguedad }}
                   </div>
                 </q-card-section>
 
                 <q-card-actions class="justify-center">
-                  <q-btn round icon="favorite" 
-                        :color="trabajador.favorite ? 'red' : 'grey-5'" 
-                        @click="toggleFavorite(trabajador)"/>
+                  <q-btn
+                    round
+                    icon="favorite"
+                    :color="trabajador.favorite ? 'red' : 'grey-5'"
+                    @click="toggleFavorite(trabajador)"
+                  />
                 </q-card-actions>
               </q-card>
             </div>
           </div>
 
-          <section id="form-image-container-full" class="form-image-container-full">
-          <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
-            <div class="form-image-container-full">
-              <img :src="modalImage" class="full-image" />
-              <q-btn icon="close" flat round class="close-btn" @click="closeModal" />
-            </div>
-          </q-dialog>
-        </section>
+          <section
+            id="form-image-container-full"
+            class="form-image-container-full"
+          >
+            <q-dialog v-model="modalVisible" backdrop-filter="blur(6px)">
+              <div class="form-image-container-full">
+                <img :src="modalImage" class="full-image" />
+                <q-btn
+                  icon="close"
+                  flat
+                  round
+                  class="close-btn"
+                  @click="closeModal"
+                />
+              </div>
+            </q-dialog>
+          </section>
         </section>
       </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-dark text-white">
       <div class="q-pa-md text-center">
-        <img src="/images/SAEDLogo.png" alt="SAED Logo" style="height: 40px">
+        <img src="/images/SAEDLogo.png" alt="SAED Logo" style="height: 40px" />
         <p class="q-mt-sm">
-          {{ language === 'es' ? 
-            'Sistema de Administración de Emergencias del Estado de San Andreas' : 
-            'San Andreas Emergency Management System' }}
+          {{
+            language === "es"
+              ? "Sistema de Administración de Emergencias del Estado de San Andreas"
+              : "San Andreas Emergency Management System"
+          }}
         </p>
       </div>
     </q-footer>
@@ -327,13 +522,17 @@ function closeModal() {
   }
 
   &.sams {
-    border-color: #2196F3;
-    .text-subtitle1 { color: #2196F3; }
+    border-color: #2196f3;
+    .text-subtitle1 {
+      color: #2196f3;
+    }
   }
 
   &.safd {
     border-color: #f44336;
-    .text-subtitle1 { color: #f44336; }
+    .text-subtitle1 {
+      color: #f44336;
+    }
   }
 }
 
@@ -381,6 +580,4 @@ function closeModal() {
 .close-btn:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
-
-
 </style>

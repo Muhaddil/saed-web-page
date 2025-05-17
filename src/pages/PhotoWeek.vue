@@ -38,6 +38,16 @@ interface Slide {
 const slides = ref<Slide[]>(
   [
     {
+      src: "./images/fotosemana/fotosemana11-2.png",
+      caption: '<i>"El cuerpo calla, la historia queda"</i>',
+      subtitle: "",
+    },
+    {
+      src: "./images/fotosemana/fotosemana11.png",
+      caption: "¡A por las inspecciones!",
+      subtitle: "",
+    },
+    {
       src: "./images/fotosemana/fotosemana10.png",
       caption: "San Andreas Fire Department",
       subtitle: "A su servicio🔥🚒",
@@ -248,7 +258,6 @@ const slides = ref<Slide[]>(
             <q-carousel
               animated
               v-model="slide"
-              navigation
               infinite
               :autoplay="autoplay"
               arrows
@@ -269,7 +278,7 @@ const slides = ref<Slide[]>(
                   v-if="slideItem.caption || slideItem.subtitle"
                   class="absolute-bottom custom-caption"
                 >
-                  <div class="text-h2">{{ slideItem.caption }}</div>
+                  <div class="text-h2" v-html="slideItem.caption"></div>
                   <div class="text-subtitle1">{{ slideItem.subtitle }}</div>
                 </div>
               </q-carousel-slide>
