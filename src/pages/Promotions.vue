@@ -37,6 +37,15 @@ const categoriaSeleccionada = ref<string>("");
 const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
   {
+    id: 36,
+    nombre: "Johnn Nolan",
+    rango: "Jefe Adjunto",
+    foto: "images/employees/Johnn_Nolan.png",
+    categoria: "03/05/2025 - 17/05/2025",
+    fecha: "17/05/2025",
+    favorite: false,
+  },
+  {
     id: 32,
     nombre: "Manolo Trabuko",
     rango: "Supervisor General",
