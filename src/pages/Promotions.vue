@@ -46,15 +46,6 @@ const ascensos = ref<Ascenso[]>([
     favorite: false,
   },
   {
-    id: 32,
-    nombre: "Manolo Trabuko",
-    rango: "Supervisor General",
-    foto: "images/NotAvailable.webp",
-    categoria: "03/05/2025 - 17/05/2025",
-    fecha: "17/05/2025",
-    favorite: false,
-  },
-  {
     id: 33,
     nombre: "Rodrigo Quintana",
     rango: "Enfermero",
