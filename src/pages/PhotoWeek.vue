@@ -38,6 +38,12 @@ interface Slide {
 const slides = ref<Slide[]>(
   [
     {
+      src: "./images/fotosemana/fotosemana12.png",
+      caption: '<i>"Cuidar y curar"</i>',
+      subtitle:
+        "En el SAED contamos con diversos estándares para cuidar tanto el cuerpo como la mente, además de fomentar un bienestar integral.",
+    },
+    {
       src: "./images/fotosemana/fotosemana11-2.png",
       caption: '<i>"El cuerpo calla, la historia queda"</i>',
       subtitle: "",
