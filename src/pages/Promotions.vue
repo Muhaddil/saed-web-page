@@ -18,6 +18,7 @@ const searchQuery = ref("");
 const showFavorites = ref(false);
 
 const allCategorias = ref<string[]>([
+  "17/05/2025 - 31/05/2025",
   "03/05/2025 - 17/05/2025",
   "19/04/2025 - 03/05/2025",
   "05/04/2025 - 19/04/2025",
@@ -36,6 +37,42 @@ const categoriaSeleccionada = ref<string>("");
 
 const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
+  {
+    id: 37,
+    nombre: "Ethan Castillo",
+    rango: "Doctor",
+    foto: "images/NotAvailable.webp",
+    categoria: "17/05/2025 - 31/05/2025",
+    fecha: "31/05/2025",
+    favorite: false,
+  },
+  {
+    id: 38,
+    nombre: "Miroslav Nurmagedov",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "17/05/2025 - 31/05/2025",
+    fecha: "31/05/2025",
+    favorite: false,
+  },
+  {
+    id: 39,
+    nombre: "Thiago Gómez",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "17/05/2025 - 31/05/2025",
+    fecha: "31/05/2025",
+    favorite: false,
+  },
+  {
+    id: 40,
+    nombre: "Thiago Gómez",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "17/05/2025 - 31/05/2025",
+    fecha: "31/05/2025",
+    favorite: false,
+  },
   {
     id: 36,
     nombre: "Johnn Nolan",
@@ -519,7 +556,7 @@ function closeModal() {
             </q-item-section>
           </q-item>
 
-          <a href="workers.html">
+          <!-- <a href="workers.html">
             <q-item clickable>
               <q-item-section class="item-row">
                 <span>
@@ -528,7 +565,7 @@ function closeModal() {
                 </span>
               </q-item-section>
             </q-item>
-          </a>
+          </a> -->
 
           <a href="photoweek.html">
             <q-item clickable>

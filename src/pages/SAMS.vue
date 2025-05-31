@@ -138,7 +138,7 @@ function closeModal() {
             </q-item>
           </a>
 
-          <a href="workers.html">
+          <!-- <a href="workers.html">
             <q-item clickable>
               <q-item-section class="item-row">
                 <span>
@@ -147,7 +147,7 @@ function closeModal() {
                 </span>
               </q-item-section>
             </q-item>
-          </a>
+          </a> -->
 
           <a href="photoweek.html">
             <q-item clickable>
