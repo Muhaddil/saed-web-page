@@ -18,6 +18,7 @@ const searchQuery = ref("");
 const showFavorites = ref(false);
 
 const allCategorias = ref<string[]>([
+  "31/05/2025 - 15/06/2025",
   "17/05/2025 - 31/05/2025",
   "03/05/2025 - 17/05/2025",
   "19/04/2025 - 03/05/2025",
@@ -37,6 +38,52 @@ const categoriaSeleccionada = ref<string>("");
 
 const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
+  {
+    id: 41,
+    nombre: "Thiago Gómez",
+    rango: "Paramédico",
+    foto: "images/NotAvailable.webp",
+    categoria: "31/05/2025 - 15/06/2025",
+    fecha: "15/06/2025",
+    favorite: false,
+  },
+  {
+    id: 42,
+    nombre: "Ethan Castillo",
+    rango: "Cirujano General",
+    foto: "images/NotAvailable.webp",
+    categoria: "31/05/2025 - 15/06/2025",
+    fecha: "15/06/2025",
+    favorite: false,
+  },
+  {
+    id: 43,
+    nombre: "Miroslav Nurmagedov",
+    rango: "Enfermero Licenciado",
+    foto: "images/NotAvailable.webp",
+    categoria: "31/05/2025 - 15/06/2025",
+    fecha: "15/06/2025",
+    favorite: false,
+  },
+  {
+    id: 44,
+    nombre: "Antonio Morales",
+    rango: "Enfermero",
+    foto: "images/NotAvailable.webp",
+    categoria: "31/05/2025 - 15/06/2025",
+    fecha: "15/06/2025",
+    favorite: false,
+  },
+  {
+    id: 45,
+    nombre: "Sergio Dominguez",
+    rango: "Doctor",
+    foto: "images/NotAvailable.webp",
+    categoria: "31/05/2025 - 15/06/2025",
+    fecha: "15/06/2025",
+    favorite: false,
+  },
+
   {
     id: 37,
     nombre: "Ethan Castillo",

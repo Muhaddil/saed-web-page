@@ -38,6 +38,12 @@ interface Slide {
 const slides = ref<Slide[]>(
   [
     {
+      src: "./images/fotosemana/fotosemana13.png",
+      caption: '<i>"Servir y cuidar"</i>',
+      subtitle:
+        "Un homenaje a quienes velan por nuestra seguridad desde las alturas del deber. En el SAED, promovemos el respeto, la entrega y el equilibrio emocional de nuestros equipos.",
+    },
+    {
       src: "./images/fotosemana/fotosemana12.png",
       caption: '<i>"Cuidar y curar"</i>',
       subtitle:
