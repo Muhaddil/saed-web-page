@@ -1,1 +1,1 @@
-let t=[],n=[];function l(t){n=n.filter((n=>n!==t))}function u(t){l(t),n.push(t)}function i(i){l(i),0===n.length&&0!==t.length&&(t[t.length-1](),t=[])}function o(l){0===n.length?l():t.push(l)}function s(n){t=t.filter((t=>t!==n))}export{o as a,i as b,u as c,s as r};
+"use strict";let t=[],i=[];function u(n){i=i.filter(l=>l!==n)}function f(n){u(n),i.push(n)}function o(n){u(n),i.length===0&&t.length!==0&&(t[t.length-1](),t=[])}function s(n){i.length===0?n():t.push(n)}function c(n){t=t.filter(l=>l!==n)}export{s as a,o as b,f as c,c as r};
