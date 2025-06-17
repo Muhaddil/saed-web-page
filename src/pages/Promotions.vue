@@ -39,6 +39,15 @@ const categoriaSeleccionada = ref<string>("");
 const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
   {
+    id: 46,
+    nombre: "Levi Whitlock",
+    rango: "Director Adjunto",
+    foto: "images/NotAvailable.webp",
+    categoria: "Ascensos Extraordinarios",
+    fecha: "17/06/2025",
+    favorite: false,
+  },
+  {
     id: 41,
     nombre: "Thiago Gómez",
     rango: "Paramédico",
