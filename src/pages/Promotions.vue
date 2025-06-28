@@ -18,6 +18,7 @@ const searchQuery = ref("");
 const showFavorites = ref(false);
 
 const allCategorias = ref<string[]>([
+  "15/06/2025 - 28/06/2025",
   "31/05/2025 - 15/06/2025",
   "17/05/2025 - 31/05/2025",
   "03/05/2025 - 17/05/2025",
@@ -38,6 +39,51 @@ const categoriaSeleccionada = ref<string>("");
 
 const savedFavorites = JSON.parse(localStorage.getItem("favorites") || "{}");
 const ascensos = ref<Ascenso[]>([
+  {
+    id: 47,
+    nombre: "Fiona Stevens",
+    rango: "Médica Experimentada",
+    foto: "images/NotAvailable.webp",
+    categoria: "15/06/2025 - 28/06/2025",
+    fecha: "28/06/2025",
+    favorite: false,
+  },
+  {
+    id: 48,
+    nombre: "Sergio Domínguez",
+    rango: "Doctor Experimentado",
+    foto: "images/NotAvailable.webp",
+    categoria: "15/06/2025 - 28/06/2025",
+    fecha: "28/06/2025",
+    favorite: false,
+  },
+  {
+    id: 49,
+    nombre: "Thiago Gómez",
+    rango: "Médico",
+    foto: "images/NotAvailable.webp",
+    categoria: "15/06/2025 - 28/06/2025",
+    fecha: "28/06/2025",
+    favorite: false,
+  },
+  {
+    id: 50,
+    nombre: "Severino Manchado",
+    rango: "Especialista",
+    foto: "images/NotAvailable.webp",
+    categoria: "15/06/2025 - 28/06/2025",
+    fecha: "28/06/2025",
+    favorite: false,
+  },
+  {
+    id: 47,
+    nombre: "Fiona Stevens",
+    rango: "Médica Experimentada",
+    foto: "images/NotAvailable.webp",
+    categoria: "15/06/2025 - 28/06/2025",
+    fecha: "28/06/2025",
+    favorite: false,
+  },
   {
     id: 46,
     nombre: "Levi Whitlock",
