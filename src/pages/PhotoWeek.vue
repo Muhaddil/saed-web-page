@@ -38,6 +38,11 @@ interface Slide {
 const slides = ref<Slide[]>(
   [
     {
+      src: "./images/fotosemana/fotosemana14.png",
+      caption: '<i>"Equipo SAMS"</i>',
+      subtitle: "",
+    },
+    {
       src: "./images/fotosemana/fotosemana13.png",
       caption: '<i>"Servir y cuidar"</i>',
       subtitle:
