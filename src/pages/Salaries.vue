@@ -74,7 +74,7 @@ async function onFileUpload(event: any) {
       const nombre = row["Nombre"] || row["nombre"] || "Desconocido";
       const id = row["ID de Usuario"] || row["id"] || "";
       const rawTiempo = String(
-        row["Tiempo Total (min)"] ?? row["minutos"] ?? ""
+        row["Tiempo Total (min)"] ?? row["minutos"] ?? "",
       ).trim();
 
       let minutos = 0;
@@ -158,7 +158,7 @@ async function calcularSalarios() {
   }
 
   guardarLabels(
-    Object.fromEntries(empleados.value.map((e) => [e.id, e.label]))
+    Object.fromEntries(empleados.value.map((e) => [e.id, e.label])),
   );
 
   isCalculating.value = false;
@@ -176,9 +176,94 @@ async function copiarResultados() {
     return;
   }
 
-  const texto = empleados.value.map((e) => e.detalle).join("\n");
+  const tarifaInteres = 1300;
+  const tarifaNoInteres = 900;
+  const tarifaDepto = 2500;
+
+  const fmt = (n: number) => Math.round(n).toString();
+
+  function detectarEstado(e: Empleado) {
+    const totalDeptos =
+      e.psicotecnicos +
+      e.instrucciones +
+      e.visitas +
+      e.cirugias +
+      e.inspecciones;
+
+    if (e.horas > 0) return `${e.horas}h`;
+    if (totalDeptos > 0) return `${e.horas}h`;
+    return "Ausencia";
+  }
+
+  const bloqueHoras = empleados.value
+    .map((e) => {
+      const nombre = e.label && e.label.trim() !== "" ? e.label : e.nombre;
+      const estado = detectarEstado(e);
+      return `🕐 ${nombre} - ${estado}`;
+    })
+    .join("\n");
+
+  function secciónDepto(titulo: string, prop: keyof Empleado) {
+    const lines = empleados.value
+      .filter((e) => (e as any)[prop] > 0)
+      .map((e) => {
+        const nombre = e.label && e.label.trim() !== "" ? e.label : e.nombre;
+        return `${nombre} - ${(e as any)[prop]}`;
+      })
+      .join("\n");
+    return lines ? `\n**${titulo}:**\n${lines}` : "";
+  }
+
+  const bloquePsicotecnicos = secciónDepto("Psicotécnicos", "psicotecnicos");
+  const bloqueInstrucciones = secciónDepto("Instrucciones", "instrucciones");
+  const bloqueVisitas = secciónDepto("Visitas Psicológicas", "visitas");
+  const bloqueCirugias = secciónDepto("Cirugías Estéticas", "cirugias");
+  const bloqueInspecciones = secciónDepto("Inspecciones", "inspecciones");
+
+  const bloqueDeptosArr = [
+    bloquePsicotecnicos,
+    bloqueInstrucciones,
+    bloqueVisitas,
+    bloqueCirugias,
+    bloqueInspecciones,
+  ].filter(Boolean);
+
+  const bloqueDeptos =
+    bloqueDeptosArr.length > 0 ? bloqueDeptosArr.join("\n") : "";
+
+  const bloqueSalarios = empleados.value
+    .map((e) => {
+      const nombre = e.label && e.label.trim() !== "" ? e.label : e.nombre;
+
+      const precioHora = e.interes === "Sí" ? tarifaInteres : tarifaNoInteres;
+      const horasTotal = e.horas * precioHora;
+      const deptoCount =
+        e.psicotecnicos +
+        e.instrucciones +
+        e.visitas +
+        e.cirugias +
+        e.inspecciones;
+      const deptoTotal = deptoCount * tarifaDepto;
+      const salario = horasTotal + deptoTotal;
+
+      if (deptoCount > 0) {
+        return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = ${fmt(
+          horasTotal,
+        )}$ + (${deptoCount}x ${fmt(tarifaDepto)}$) = **${fmt(salario)}$**`;
+      } else {
+        return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = **${fmt(
+          salario,
+        )}$**`;
+      }
+    })
+    .join("\n");
+
+  const totalFormatted = `${fmt(totalNomina.value)}$`;
+
   const resultado =
-    texto + `\n\nTOTAL: $ ${totalNomina.value.toLocaleString()}`;
+    bloqueHoras +
+    (bloqueDeptos ? `\n${bloqueDeptos}` : "") +
+    `\n\n${bloqueSalarios}\n\nTOTAL: ${totalFormatted}`;
 
   await copy(resultado);
   toast.info("Resultados copiados al portapapeles", {
@@ -192,7 +277,7 @@ watch(
     const labels = Object.fromEntries(val.map((e) => [e.id, e.label]));
     guardarLabels(labels);
   },
-  { deep: true }
+  { deep: true },
 );
 
 onMounted(() => {
@@ -425,7 +510,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
-html, body, #q-app {
+html,
+body,
+#q-app {
   background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
 }
 
