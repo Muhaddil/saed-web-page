@@ -20,6 +20,7 @@ export default defineConfig({
         "divisionssapd.html",
         "photoweek.html",
         "workers.html",
+        "salaries.html",
       ],
     },
   },

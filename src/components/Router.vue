@@ -22,6 +22,7 @@ const router: Record<string, RouterObj> = {
   divisionssapd: { component: "DivisionsSAPD", requiresData: false },
   photoweek: { component: "PhotoWeek", requiresData: false },
   workers: { component: "Workers", requiresData: false },
+  salaries: { component: "Salaries", requiresData: false },
 };
 
 const routeComponentObj = getRouteComponent();
