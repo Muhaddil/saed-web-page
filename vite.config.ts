@@ -3,11 +3,16 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { quasar } from "@quasar/vite-plugin";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   base: "/saed-web-page/",
   plugins: [vue(), quasar()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
   build: {
+    chunkSizeWarningLimit: 5000,
     rollupOptions: {
       input: [
         "index.html",
@@ -22,11 +27,17 @@ export default defineConfig({
         "workers.html",
         "salaries.html",
       ],
-    },
-  },
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+          if (id.endsWith(".css")) {
+            return "styles";
+          }
+          return undefined;
+        },
+      },
     },
   },
 });

@@ -79,7 +79,7 @@ async function onFileUpload(event: any) {
       const nombre = row["Nombre"] || row["nombre"] || "Desconocido";
       const id = row["ID de Usuario"] || row["id"] || "";
       const rawTiempo = String(
-        row["Tiempo Total (min)"] ?? row["minutos"] ?? ""
+        row["Tiempo Total (min)"] ?? row["minutos"] ?? "",
       ).trim();
 
       let minutos = 0;
@@ -165,7 +165,7 @@ async function calcularSalarios() {
   }
 
   guardarLabels(
-    Object.fromEntries(empleados.value.map((e) => [e.id, e.label]))
+    Object.fromEntries(empleados.value.map((e) => [e.id, e.label])),
   );
 
   calculationProgress.value = 100;
@@ -260,11 +260,11 @@ async function copiarResultados() {
 
       if (deptoCount > 0) {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = ${fmt(
-          horasTotal
+          horasTotal,
         )}$ + (${deptoCount}x ${fmt(tarifaDepto)}$) = **${fmt(salario)}$**`;
       } else {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = **${fmt(
-          salario
+          salario,
         )}$**`;
       }
     })
@@ -289,7 +289,7 @@ watch(
     const labels = Object.fromEntries(val.map((e) => [e.id, e.label]));
     guardarLabels(labels);
   },
-  { deep: true }
+  { deep: true },
 );
 
 onMounted(() => {
