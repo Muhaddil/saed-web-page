@@ -384,8 +384,8 @@ onMounted(() => {
             responsiveLayout="scroll"
             stripedRows
             class="custom-table"
-            :paginator="empleados.length > 10"
-            :rows="10"
+            :paginator="empleados.length > 8"
+            :rows="8"
             scrollable
             scrollHeight="600px"
           >
