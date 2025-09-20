@@ -15,6 +15,10 @@ import ProgressBar from "primevue/progressbar";
 import { useClipboard } from "@vueuse/core";
 import { useToast, POSITION } from "vue-toastification";
 
+// onMounted(() => {
+//   window.location.href = "/saed-web-page/indextest.html";
+// });
+
 interface Empleado {
   id: string;
   nombre: string;
@@ -36,6 +40,7 @@ const { copy } = useClipboard();
 const toast = useToast();
 const isCalculating = ref(false);
 const calculationProgress = ref(0);
+const showProgress = ref(false);
 const isUploading = ref(false);
 
 const LS_KEY = "empleados_labels";
@@ -74,7 +79,7 @@ async function onFileUpload(event: any) {
       const nombre = row["Nombre"] || row["nombre"] || "Desconocido";
       const id = row["ID de Usuario"] || row["id"] || "";
       const rawTiempo = String(
-        row["Tiempo Total (min)"] ?? row["minutos"] ?? "",
+        row["Tiempo Total (min)"] ?? row["minutos"] ?? ""
       ).trim();
 
       let minutos = 0;
@@ -124,6 +129,7 @@ async function calcularSalarios() {
   }
 
   isCalculating.value = true;
+  showProgress.value = true;
   calculationProgress.value = 0;
 
   const tarifaInteres = 1300;
@@ -154,14 +160,20 @@ async function calcularSalarios() {
 
     const detalle = `💸${displayName} (${emp.horas}h): ${emp.horas} * ${precioHora} + ${tarifaDepto} * ${deptoCount} = $${salario}`;
     empleados.value[i] = { ...emp, salario, detalle };
-    calculationProgress.value = ((i + 1) / totalEmpleados) * 100;
+
+    calculationProgress.value = Math.round(((i + 1) / totalEmpleados) * 100);
   }
 
   guardarLabels(
-    Object.fromEntries(empleados.value.map((e) => [e.id, e.label])),
+    Object.fromEntries(empleados.value.map((e) => [e.id, e.label]))
   );
 
+  calculationProgress.value = 100;
   isCalculating.value = false;
+
+  setTimeout(() => {
+    showProgress.value = false;
+  }, 800);
 
   toast.success(`Salarios calculados para ${totalEmpleados} empleados`, {
     position: POSITION.BOTTOM_RIGHT,
@@ -248,11 +260,11 @@ async function copiarResultados() {
 
       if (deptoCount > 0) {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = ${fmt(
-          horasTotal,
+          horasTotal
         )}$ + (${deptoCount}x ${fmt(tarifaDepto)}$) = **${fmt(salario)}$**`;
       } else {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = **${fmt(
-          salario,
+          salario
         )}$**`;
       }
     })
@@ -277,7 +289,7 @@ watch(
     const labels = Object.fromEntries(val.map((e) => [e.id, e.label]));
     guardarLabels(labels);
   },
-  { deep: true },
+  { deep: true }
 );
 
 onMounted(() => {
@@ -341,9 +353,9 @@ onMounted(() => {
           </div>
 
           <ProgressBar
-            v-if="isCalculating"
+            v-if="showProgress"
             :value="calculationProgress"
-            class="progress-bar"
+            class="progress-bar smooth-progress"
           />
 
           <div v-if="totalNomina > 0" class="total-display">
@@ -558,6 +570,10 @@ body,
   color: #a3a3a3;
   margin: 0.5rem 0 0 0;
   font-weight: 300;
+}
+
+.smooth-progress .p-progressbar-value {
+  transition: width 0.3s ease-in-out;
 }
 
 .main-content {
