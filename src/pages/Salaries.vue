@@ -132,8 +132,8 @@ async function calcularSalarios() {
   showProgress.value = true;
   calculationProgress.value = 0;
 
-  const tarifaInteres = 1300;
-  const tarifaNoInteres = 900;
+  const tarifaInteres = 1100;
+  const tarifaNoInteres = 1100;
   const tarifaDepto = 2500;
 
   const totalEmpleados = empleados.value.length;
