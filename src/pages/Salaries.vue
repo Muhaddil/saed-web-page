@@ -188,8 +188,8 @@ async function copiarResultados() {
     return;
   }
 
-  const tarifaInteres = 1300;
-  const tarifaNoInteres = 900;
+  const tarifaInteres = 1100;
+  const tarifaNoInteres = 1100;
   const tarifaDepto = 2500;
 
   const fmt = (n: number) => Math.round(n).toString();
