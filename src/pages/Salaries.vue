@@ -35,6 +35,40 @@ interface Empleado {
   label: string;
 }
 
+interface Tarifas {
+  tarifaInteres: number;
+  tarifaNoInteres: number;
+  tarifaDepto: number;
+}
+
+const tarifas = ref<Tarifas>({
+  tarifaInteres: 1100,
+  tarifaNoInteres: 1100,
+  tarifaDepto: 2500,
+});
+
+const LS_TARIFAS_KEY = "tarifas_salarios";
+
+function cargarTarifasGuardadas(): Tarifas {
+  try {
+    const saved = localStorage.getItem(LS_TARIFAS_KEY);
+    return saved
+      ? JSON.parse(saved)
+      : { tarifaInteres: 1100, tarifaNoInteres: 1100, tarifaDepto: 2500 };
+  } catch {
+    return { tarifaInteres: 1100, tarifaNoInteres: 1100, tarifaDepto: 2500 };
+  }
+}
+
+function guardarTarifas(tarifas: Tarifas) {
+  localStorage.setItem(LS_TARIFAS_KEY, JSON.stringify(tarifas));
+}
+
+onMounted(() => {
+  tarifas.value = cargarTarifasGuardadas();
+  document.body.classList.add("dark-theme");
+});
+
 const empleados = ref<Empleado[]>([]);
 const { copy } = useClipboard();
 const toast = useToast();
@@ -79,7 +113,7 @@ async function onFileUpload(event: any) {
       const nombre = row["Nombre"] || row["nombre"] || "Desconocido";
       const id = row["ID de Usuario"] || row["id"] || "";
       const rawTiempo = String(
-        row["Tiempo Total (min)"] ?? row["minutos"] ?? "",
+        row["Tiempo Total (min)"] ?? row["minutos"] ?? ""
       ).trim();
 
       let minutos = 0;
@@ -132,9 +166,7 @@ async function calcularSalarios() {
   showProgress.value = true;
   calculationProgress.value = 0;
 
-  const tarifaInteres = 1100;
-  const tarifaNoInteres = 1100;
-  const tarifaDepto = 2500;
+  const tarifaDepto = tarifas.value.tarifaDepto;
 
   const totalEmpleados = empleados.value.length;
 
@@ -142,7 +174,10 @@ async function calcularSalarios() {
     await new Promise((resolve) => setTimeout(resolve, 50));
 
     const emp = empleados.value[i];
-    const precioHora = emp.interes === "Sí" ? tarifaInteres : tarifaNoInteres;
+    const precioHora =
+      emp.interes === "Sí"
+        ? tarifas.value.tarifaInteres
+        : tarifas.value.tarifaNoInteres;
     const horasTotal = emp.horas * precioHora;
 
     const deptoCount =
@@ -152,7 +187,7 @@ async function calcularSalarios() {
       emp.cirugias +
       emp.inspecciones;
 
-    const deptoTotal = deptoCount * tarifaDepto;
+    const deptoTotal = deptoCount * tarifas.value.tarifaDepto;
     const salario = horasTotal + deptoTotal;
 
     const displayName =
@@ -165,7 +200,7 @@ async function calcularSalarios() {
   }
 
   guardarLabels(
-    Object.fromEntries(empleados.value.map((e) => [e.id, e.label])),
+    Object.fromEntries(empleados.value.map((e) => [e.id, e.label]))
   );
 
   calculationProgress.value = 100;
@@ -188,9 +223,7 @@ async function copiarResultados() {
     return;
   }
 
-  const tarifaInteres = 1100;
-  const tarifaNoInteres = 1100;
-  const tarifaDepto = 2500;
+  const tarifaDepto = tarifas.value.tarifaDepto;
 
   const fmt = (n: number) => Math.round(n).toString();
 
@@ -247,7 +280,10 @@ async function copiarResultados() {
     .map((e) => {
       const nombre = e.label && e.label.trim() !== "" ? e.label : e.nombre;
 
-      const precioHora = e.interes === "Sí" ? tarifaInteres : tarifaNoInteres;
+      const precioHora =
+        e.interes === "Sí"
+          ? tarifas.value.tarifaInteres
+          : tarifas.value.tarifaNoInteres;
       const horasTotal = e.horas * precioHora;
       const deptoCount =
         e.psicotecnicos +
@@ -255,16 +291,16 @@ async function copiarResultados() {
         e.visitas +
         e.cirugias +
         e.inspecciones;
-      const deptoTotal = deptoCount * tarifaDepto;
+      const deptoTotal = deptoCount * tarifas.value.tarifaDepto;
       const salario = horasTotal + deptoTotal;
 
       if (deptoCount > 0) {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = ${fmt(
-          horasTotal,
+          horasTotal
         )}$ + (${deptoCount}x ${fmt(tarifaDepto)}$) = **${fmt(salario)}$**`;
       } else {
         return `💸  ${nombre} - ${e.horas}h x ${fmt(precioHora)}$ = **${fmt(
-          salario,
+          salario
         )}$**`;
       }
     })
@@ -289,7 +325,7 @@ watch(
     const labels = Object.fromEntries(val.map((e) => [e.id, e.label]));
     guardarLabels(labels);
   },
-  { deep: true },
+  { deep: true }
 );
 
 onMounted(() => {
@@ -330,6 +366,38 @@ onMounted(() => {
                 <i class="pi pi-spin pi-spinner"></i>
                 <span>Procesando archivo...</span>
               </div>
+            </div>
+          </div>
+
+          <div class="tarifas-config">
+            <h3>Configuración de Tarifas</h3>
+            <div class="tarifa-item">
+              <label>Tarifa con Interés ($):</label>
+              <InputNumber
+                v-model="tarifas.tarifaInteres"
+                :min="0"
+                @update:modelValue="guardarTarifas(tarifas)"
+                class="custom-number"
+              />
+            </div>
+            <div class="tarifa-item">
+              <label>Tarifa sin Interés ($):</label>
+              <InputNumber
+                v-model="tarifas.tarifaNoInteres"
+                :min="0"
+                @update:modelValue="guardarTarifas(tarifas)"
+                class="custom-number"
+              />
+            </div>
+            <div class="tarifa-item">
+              <label>Tarifa por Departamento ($):</label>
+              <InputNumber
+                  v-model="tarifas.tarifaDepto"
+                  :min="0"
+                  class="custom-number"
+                  @update:modelValue="guardarTarifas(tarifas)"
+                  :style="{ width: '70px' }"
+                />
             </div>
           </div>
 
@@ -590,6 +658,7 @@ body,
   border: 1px solid #404040 !important;
   border-radius: 1rem !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .upload-section {
@@ -630,6 +699,48 @@ body,
   border-radius: 0.75rem;
   color: #3b82f6;
   font-weight: 500;
+}
+
+.tarifas-config {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: #262626;
+  border-radius: 0.75rem;
+  border: 1px solid #404040;
+  width: 100%;
+  max-width: 400px;
+}
+
+.tarifas-config h3 {
+  margin: 0 0 1.25rem 0;
+  color: #e5e5e5;
+  font-size: 1.1rem;
+}
+
+.tarifa-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.tarifa-item label {
+  color: #a3a3a3;
+  font-size: 0.9rem;
+  flex: 1;
+  text-align: left;
+  margin-right: 1rem;
+}
+
+.tarifa-input {
+  width: 120px;
+  background: #1a1a1a !important;
+  border: 1px solid #404040 !important;
+  color: #e5e5e5 !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  text-align: right;
 }
 
 .actions {
@@ -710,6 +821,17 @@ body,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .employees-table {
@@ -963,7 +1085,6 @@ body,
   }
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
